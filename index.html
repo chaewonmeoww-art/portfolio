@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<style>
+  /* ===== 폰트 ===== */
+  /* Pretendard : "디자이너 박채원 입니다." 에만 사용 */
+  @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+  @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+
+  /* Presentation (Freesentation) : 나머지 전부 */
+  @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-3Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+  @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+  /* ===== 색상 ===== */
+  :root {
+    --bg:#ffffff;
+    --black:#000000;
+    --light:#C4C4C4;
+    --mid:#868686;
+    --dark:#333333;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    background:var(--bg);
+    overflow-x:hidden;
+    font-family:'Presentation', sans-serif;
+    color:var(--dark);
+  }
+
+  /* ===================== 1. 인트로 (메인) ===================== */
+  .hero-wrap { height:220vh; position:relative; }   /* 스크롤 길이 */
+  .hero {
+    position:sticky; top:0;
+    height:100vh; width:100%;
+    overflow:hidden;
+    display:flex; align-items:flex-end;   /* 하단 정렬 */
+  }
+  .hero img {
+    width:100vw; height:auto; display:block;   /* 가로 꽉 채움 */
+    will-change:transform;
+  }
+
+  /* ===================== 2. 이력서(About) ===================== */
+  .resume {
+    background:#ffffff;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:60px clamp(48px, 6vw, 110px);
+  }
+  .resume-inner { width:100%; max-width:1700px; margin:0 auto; }
+
+  .topbar {
+    display:flex; justify-content:space-between;
+    font-size:clamp(14px,1.1vw,18px); color:var(--light); font-weight:400;
+    margin-bottom:clamp(40px,4.5vw,72px);
+  }
+
+  .resume-body { display:flex; gap:clamp(54px,5vw,90px); }
+
+  /* ---- 왼쪽 ---- */
+  .left { width:clamp(300px,24vw,400px); flex:0 0 auto; }
+  .photo {
+    width:clamp(175px,13vw,230px); aspect-ratio:175/215; height:auto;
+    object-fit:cover; display:block; margin-bottom:clamp(30px,2.6vw,44px);
+  }
+  .intro {
+    font-family:'Pretendard', sans-serif;   /* 이름만 Pretendard */
+    color:var(--black);
+    line-height:1.25; margin-bottom:clamp(46px,4vw,64px);
+  }
+  .intro .line1 { font-size:clamp(34px,2.8vw,46px); font-weight:400; display:flex; align-items:center; }
+  .intro .dash { display:inline-block; width:clamp(66px,5vw,86px); height:2px; background:var(--black); margin-left:14px; }
+  .intro .line2 { font-size:clamp(34px,2.8vw,46px); font-weight:400; margin-top:4px; }
+  .intro .line2 b { font-weight:800; }
+
+  .contact { display:flex; flex-direction:column; gap:clamp(16px,1.4vw,22px); font-size:clamp(15px,1.1vw,18px); }
+  .contact .row { display:flex; align-items:baseline; }
+  .contact .label { width:78px; color:var(--black); font-weight:700; }
+  .contact .val { color:var(--dark); font-weight:400; }
+
+  /* ---- 가운데 구분선 ---- */
+  .divider { width:1px; background:var(--light); align-self:stretch; }
+
+  /* ---- 오른쪽 ---- */
+  .right {
+    flex:1;
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    column-gap:clamp(48px,4.5vw,80px); row-gap:clamp(44px,4.5vw,72px);
+    align-content:start;
+  }
+  .block { min-width:0; }
+  .block h2 {
+    display:flex; align-items:center; gap:16px;
+    font-size:clamp(21px,1.6vw,28px); font-weight:600; color:var(--black);
+    margin-bottom:clamp(26px,2.2vw,36px); white-space:nowrap;
+  }
+  .block h2::after { content:''; flex:1; height:1px; background:var(--light); }
+
+  /* timeline */
+  .timeline { list-style:none; position:relative; padding-left:24px; }
+  .timeline::before {
+    content:''; position:absolute; left:4px; top:6px; bottom:6px;
+    width:1px; background:var(--light);
+  }
+  .timeline li { position:relative; margin-bottom:clamp(22px,2vw,32px); }
+  .timeline li:last-child { margin-bottom:0; }
+  .timeline li::before {
+    content:''; position:absolute; left:-24px; top:5px;
+    width:10px; height:10px; border-radius:50%; background:var(--dark);
+  }
+  .timeline .date { display:block; font-size:clamp(13px,1vw,16px); color:var(--mid); font-weight:400; }
+  .timeline .main { display:block; font-size:clamp(15px,1.15vw,19px); color:var(--black); font-weight:500; margin-top:5px; }
+
+  /* skill */
+  .skills { display:grid; grid-template-columns:1fr 1fr; column-gap:clamp(28px,2.5vw,48px); row-gap:clamp(22px,2.3vw,34px); }
+  .skill { display:flex; align-items:center; gap:clamp(13px,1.1vw,18px); }
+  .skill img { width:clamp(38px,3vw,48px); height:clamp(38px,3vw,48px); object-fit:contain; flex:0 0 auto; }
+  .skill .s-name { font-size:clamp(15px,1.15vw,19px); font-weight:600; color:var(--black); }
+  .skill .s-desc { font-size:clamp(12px,0.9vw,15px); color:var(--mid); margin-top:3px; font-weight:400; }
+
+  /* ===== 이력서 스크롤 등장 애니메이션 ===== */
+  .resume .topbar,
+  .resume .left,
+  .resume .right .block {
+    opacity:0; transform:translateY(28px);
+    transition:opacity 1.05s ease var(--d,0s), transform 1.05s ease var(--d,0s);
+  }
+  /* 타임라인 세로선: 위에서 아래로 그려짐 */
+  .resume .right .block .timeline::before {
+    transform:scaleY(0); transform-origin:top;
+    transition:transform 1.2s ease calc(var(--d,0s) + .2s);
+  }
+  /* 등장 순서: 왼쪽(디자이너 박채원입니다) → Education(.35) → License(.65) → Experience(.95) → Skill(1.25) */
+  .resume .left   { --d:0s; }
+  .resume .topbar { --d:0s; }
+  .resume .right .block:nth-child(1) { --d:.35s; }
+  .resume .right .block:nth-child(2) { --d:.95s; }
+  .resume .right .block:nth-child(3) { --d:.65s; }
+  .resume .right .block:nth-child(4) { --d:1.25s; }
+
+  .resume.reveal .topbar,
+  .resume.reveal .left,
+  .resume.reveal .right .block { opacity:1; transform:none; }
+  .resume.reveal .right .block .timeline::before { transform:scaleY(1); }
+
+  /* ===================== 3. Index (프로젝트 목록) ===================== */
+  .index-wrap { position:relative; height:200vh; }   /* 목차 이후 스크롤 구간 */
+  .index {
+    background:#ffffff;
+    position:sticky; top:0;
+    height:100vh; overflow:hidden;
+    display:flex; align-items:flex-start;
+    padding:95px 260px 100px 142px;   /* 위 / 우 / 아래 / 좌 */
+  }
+  .index-inner { width:100%; }
+  .proj { will-change:transform, opacity; }
+
+  .index-head { display:flex; align-items:flex-start; gap:34px; margin-bottom:80px; }
+  .index-head h2 {
+    font-size:clamp(34px,3.2vw,48px); font-weight:700; color:#000000;
+    line-height:1.0; white-space:nowrap;
+  }
+  .index-head .hline { flex:1; height:1px; background:#000000; margin-top:45px; margin-left:clamp(280px,31vw,640px); }
+
+  .proj-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:repeat(4, auto);
+    grid-auto-flow:column;
+    column-gap:200px;   /* 열 간격 */
+    row-gap:80px;       /* 행 간격 */
+  }
+  .proj { display:grid; grid-template-columns:auto 1fr; gap:18px; }
+  .proj .num { color:#868686; font-size:clamp(14px,1.05vw,16px); font-weight:500; padding-top:4px; }
+  .proj-title { color:#000000; font-size:clamp(16px,1.3vw,20px); font-weight:700; }
+  .proj-sub {
+    display:grid; grid-template-columns:1fr auto auto; align-items:center;
+    gap:0 clamp(14px,1.4vw,22px); margin-top:7px;
+    font-size:clamp(12px,0.95vw,14px); font-weight:400;
+  }
+  .proj-sub .desc { color:#000000; }   /* 설명: 검정 */
+  .proj-sub .year { color:#868686; }   /* 2026: 868686 */
+  .proj-sub .rate { color:#6A6A6A; }   /* % 작업: 6A6A6A */
+
+  @media (max-width:900px) {
+    .resume-body { flex-direction:column; }
+    .divider { display:none; }
+    .right { grid-template-columns:1fr; }
+    .skills { grid-template-columns:1fr 1fr; }
+    .proj-grid { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== 인트로 (메인) ===== -->
+  <div class="hero-wrap">
+    <section class="hero">
+      <img src="images/portfolio.png" alt="Portfolio" id="heroImg">
+    </section>
+  </div>
+
+  <!-- ===== 이력서(About) ===== -->
+  <section class="resume">
+    <div class="resume-inner">
+      <header class="topbar">
+        <span>2026</span>
+        <span>Designed by Chaewon park</span>
+        <span>UX/UI</span>
+      </header>
+
+      <div class="resume-body">
+        <!-- 왼쪽 -->
+        <aside class="left">
+          <img class="photo" src="images/profile%20img.png" alt="박채원">
+          <div class="intro">
+            <div class="line1">디자이너 <span class="dash"></span></div>
+            <div class="line2"><b>박채원</b> 입니다.</div>
+          </div>
+          <div class="contact">
+            <div class="row"><span class="label">Call</span><span class="val">010 - 4152 - 5064</span></div>
+            <div class="row"><span class="label">Email</span><span class="val">cw1114@naver.com</span></div>
+            <div class="row"><span class="label">Birth</span><span class="val">2003 - 11 -14</span></div>
+          </div>
+        </aside>
+
+        <div class="divider"></div>
+
+        <!-- 오른쪽 -->
+        <div class="right">
+          <!-- Education -->
+          <section class="block">
+            <h2>Education</h2>
+            <ul class="timeline">
+              <li><span class="date">22.03 - 25.02</span><span class="main">신구대학교 환경조경과 졸업</span></li>
+              <li><span class="date">19.03 - 22.01</span><span class="main">중앙고등학교 졸업</span></li>
+            </ul>
+          </section>
+
+          <!-- Experience & Education -->
+          <section class="block">
+            <h2>Experience &amp; Education</h2>
+            <ul class="timeline">
+              <li><span class="date">26.02 - 26.07</span><span class="main">그린컴퓨터아카데미 성남 UI/UX반응형 웹 디자인&amp;퍼블리셔 정규과정 수료</span></li>
+              <li><span class="date">25.07 - 25.12</span><span class="main">(주)도담조경</span></li>
+            </ul>
+          </section>
+
+          <!-- License -->
+          <section class="block">
+            <h2>License</h2>
+            <ul class="timeline">
+              <li><span class="date">취득예정</span><span class="main">웹디자인개발기능사</span></li>
+              <li><span class="date">취득예정</span><span class="main">컴퓨터그래픽기능사</span></li>
+              <li><span class="date">2025.06.20</span><span class="main">GTQ 일러스트 1급</span></li>
+              <li><span class="date">2025.04.11</span><span class="main">GTQ 포토샵 1급</span></li>
+            </ul>
+          </section>
+
+          <!-- Skill -->
+          <section class="block">
+            <h2>Skill</h2>
+            <div class="skills">
+              <div class="skill"><img src="images/ps.png" alt="Photoshop"><div><div class="s-name">Adobe Photoshop</div><div class="s-desc">이미지 편집, 콘텐츠 제작, 배너 등</div></div></div>
+              <div class="skill"><img src="images/html.png" alt="HTML"><div><div class="s-name">HTML</div><div class="s-desc">웹 구조 설계 및 코드 이해</div></div></div>
+              <div class="skill"><img src="images/ai.png" alt="Illustrator"><div><div class="s-name">Adobe Illustrator</div><div class="s-desc">아이콘 제작, 로고, 벡터 그래픽 등</div></div></div>
+              <div class="skill"><img src="images/css.png" alt="CSS"><div><div class="s-name">CSS</div><div class="s-desc">레이아웃 및 스타일 구현 이해</div></div></div>
+              <div class="skill"><img src="images/figma.png" alt="Figma"><div><div class="s-name">Figma</div><div class="s-desc">UI/UX 디자인, 와이어프레임, 프로토타입 등</div></div></div>
+              <div class="skill"><img src="images/github.png" alt="Github"><div><div class="s-name">Github</div><div class="s-desc">HTML/CSS 프로젝트 관리 및 배포</div></div></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Index (프로젝트 목록) ===== -->
+  <div class="index-wrap">
+  <section class="index">
+    <div class="index-inner">
+      <div class="index-head">
+        <h2>Index<br>/</h2>
+        <span class="hline"></span>
+      </div>
+
+      <div class="proj-grid">
+        <div class="proj">
+          <span class="num">01</span>
+          <div>
+            <div class="proj-title">Honeybrown Website Design</div>
+            <div class="proj-sub"><span class="desc">Honeybrown 웹사이트 리디자인 프로젝트</span><span class="year">2026</span><span class="rate">100% 작업</span></div>
+          </div>
+        </div>
+        <div class="proj">
+          <span class="num">02</span>
+          <div>
+            <div class="proj-title">MAC Website Design</div>
+            <div class="proj-sub"><span class="desc">MAC 웹사이트 리디자인 프로젝트</span><span class="year">2026</span><span class="rate">100% 작업</span></div>
+          </div>
+        </div>
+        <div class="proj">
+          <span class="num">03</span>
+          <div>
+            <div class="proj-title">Aesop Website Design</div>
+            <div class="proj-sub"><span class="desc">Aesop 웹사이트 리디자인 프로젝트</span><span class="year">2026</span><span class="rate">100% 작업</span></div>
+          </div>
+        </div>
+        <div class="proj">
+          <span class="num">04</span>
+          <div>
+            <div class="proj-title">Judy game Website Design</div>
+            <div class="proj-sub"><span class="desc">Judy game 웹사이트 리디자인 프로젝트</span><span class="year">2026</span><span class="rate">100% 작업</span></div>
+          </div>
+        </div>
+        <div class="proj">
+          <span class="num">05</span>
+          <div>
+            <div class="proj-title">MathHub Website Design</div>
+            <div class="proj-sub"><span class="desc">MathHub 웹사이트 리디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
+          </div>
+        </div>
+        <div class="proj">
+          <span class="num">06</span>
+          <div>
+            <div class="proj-title">TRACKSY App Design</div>
+            <div class="proj-sub"><span class="desc">TRACKSY 앱디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
+          </div>
+        </div>
+        <div class="proj">
+          <span class="num">07</span>
+          <div>
+            <div class="proj-title">Banner Design</div>
+            <div class="proj-sub"><span class="desc">Banner 디자인</span><span class="year">2026</span><span class="rate">100% 작업</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    // 새로고침하면 항상 맨 위에서 시작
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    window.addEventListener('load', () => window.scrollTo(0, 0));
+
+    // 스크롤하면 Portfolio 글씨가 왼쪽에서 나타나 오른쪽으로 이동
+    const wrap    = document.querySelector('.hero-wrap');
+    const heroImg = document.getElementById('heroImg');
+    const clamp   = (v, a, b) => Math.min(b, Math.max(a, v));
+
+    function heroRender() {
+      const vh = window.innerHeight;
+      const y  = window.scrollY;
+      const slideEnd = wrap.offsetHeight - vh;   // 고정이 풀리는 지점
+
+      // 1단계: 고정된 채 왼쪽 밖 → 제자리로 이동
+      const slide = clamp(y / slideEnd, 0, 1);
+      heroImg.style.transform = `translateX(${-100 + slide * 100}vw)`;
+
+      // 2단계: 고정이 풀린 뒤 위로 스크롤되며 내려갈수록 사라짐
+      const fade = clamp((y - slideEnd) / (vh * 0.9), 0, 1);
+      heroImg.style.opacity = String(1 - fade);
+    }
+
+    window.addEventListener('scroll', () => requestAnimationFrame(heroRender), { passive: true });
+    window.addEventListener('resize', heroRender);
+    heroRender();
+
+    // 목차: 아래로 더 스크롤하면 항목이 01→07 순서대로 위로 올라가며 사라짐
+    const indexWrap = document.querySelector('.index-wrap');
+    const projs = document.querySelectorAll('.index .proj');
+    function indexRender() {
+      const total = indexWrap.offsetHeight - window.innerHeight;
+      const p = clamp((window.scrollY - indexWrap.offsetTop) / total, 0, 1);
+      projs.forEach((el, i) => {
+        const start = 0.25 + i * 0.06;
+        const dur = 0.4;
+        const lp = clamp((p - start) / dur, 0, 1);
+        el.style.transform = `translateY(${-lp * 90}px)`;
+        el.style.opacity = String(1 - lp);
+      });
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(indexRender), { passive: true });
+    window.addEventListener('resize', indexRender);
+    indexRender();
+
+    // 이력서 섹션이 보이면 순서대로 등장
+    const resume = document.querySelector('.resume');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { resume.classList.add('reveal'); io.disconnect(); }
+      });
+    }, { threshold: 0.15 });
+    io.observe(resume);
+  </script>
+</body>
+</html>
