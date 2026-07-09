@@ -10,6 +10,7 @@
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
 
@@ -19,6 +20,17 @@
   @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
   @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
   @font-face { font-family:'Presentation'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+  /* A2z : Design System 타이포그래피 샘플 */
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-1Thin.woff2') format('woff2'); font-weight:100; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-2ExtraLight.woff2') format('woff2'); font-weight:200; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-4Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-8ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+  @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-9Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
 
   /* ===== 색상 ===== */
   :root {
@@ -38,17 +50,35 @@
     color:var(--dark);
   }
 
+  /* 섹션 사이 세로 간격 (배경색이 있는 섹션은 padding으로 채워 흰 여백 방지) */
+  .resume, .index-wrap { margin-top:200px; }
+  .mac-wrap { height:1000vh; }   /* MAC 페이지가 길어 고정 구간을 더 늘림 */
+
   /* ===================== 1. 인트로 (메인) ===================== */
-  .hero-wrap { height:220vh; position:relative; }   /* 스크롤 길이 */
+  .hero-wrap { height:100vh; position:relative; }
   .hero {
     position:sticky; top:0;
     height:100vh; width:100%;
     overflow:hidden;
-    display:flex; align-items:flex-end;   /* 하단 정렬 */
   }
-  .hero img {
-    width:100vw; height:auto; display:block;   /* 가로 꽉 채움 */
-    will-change:transform;
+  .cover-svg { width:100%; height:100%; display:block; }
+  /* 스크롤 안내 (인트로 하단) */
+  .scroll-ind {
+    position:absolute; left:50%; bottom:clamp(24px,4vh,48px);
+    transform:translateX(-50%); z-index:4;
+    display:flex; flex-direction:column; align-items:center; gap:11px;
+    color:#EDEAE4; pointer-events:none; will-change:opacity;
+  }
+  .scroll-ind span {
+    font-size:13px; font-weight:600; letter-spacing:.42em; text-indent:.42em;
+  }
+  .scroll-ind svg {
+    width:22px; height:12px; display:block;
+    animation:scrollBounce 1.7s ease-in-out infinite;
+  }
+  @keyframes scrollBounce {
+    0%,100% { transform:translateY(0); opacity:.65; }
+    50%     { transform:translateY(6px); opacity:1; }
   }
 
   /* ===================== 2. 이력서(About) ===================== */
@@ -156,16 +186,28 @@
   .resume.reveal .right .block .timeline::before { transform:scaleY(1); }
 
   /* ===================== 3. Index (프로젝트 목록) ===================== */
-  .index-wrap { position:relative; height:200vh; }   /* 목차 이후 스크롤 구간 */
+  .index-wrap { position:relative; }
   .index {
     background:#ffffff;
-    position:sticky; top:0;
-    height:100vh; overflow:hidden;
-    display:flex; align-items:flex-start;
+    min-height:100vh;
+    display:flex; align-items:center;
     padding:95px 260px 100px 142px;   /* 위 / 우 / 아래 / 좌 */
   }
   .index-inner { width:100%; }
-  .proj { will-change:transform, opacity; }
+  /* 스크롤로 목차 진입 시 아래에서 스르륵 떠오르는 등장 */
+  .proj {
+    opacity:0; transform:translateY(42px);
+    transition:opacity .7s ease var(--d,0s), transform .7s ease var(--d,0s);
+    will-change:transform, opacity;
+  }
+  .index .proj:nth-child(1){ --d:0s; }
+  .index .proj:nth-child(2){ --d:.08s; }
+  .index .proj:nth-child(3){ --d:.16s; }
+  .index .proj:nth-child(4){ --d:.24s; }
+  .index .proj:nth-child(5){ --d:.32s; }
+  .index .proj:nth-child(6){ --d:.40s; }
+  .index .proj:nth-child(7){ --d:.48s; }
+  .index.reveal .proj { opacity:1; transform:none; }
 
   .index-head { display:flex; align-items:flex-start; gap:34px; margin-bottom:80px; }
   .index-head h2 {
@@ -195,13 +237,26 @@
   .proj-sub .rate { color:#6A6A6A; }   /* % 작업: 6A6A6A */
 
   /* ===================== 4. 프로젝트 상세 (Honeybrown) ===================== */
+  /* 고정(sticky) 스크롤 구간: 화면 이미지가 끝까지 내려갈 때까지 섹션을 붙잡아 둠 */
+  .hb-wrap { position:relative; height:330vh; }
   .hb {
-    position:relative; height:100vh; min-height:780px; overflow:hidden;
+    position:sticky; top:0; height:100vh; overflow:hidden;
     background:url('images/honeybrown_img.png') center/cover no-repeat;
     color:#ffffff;
     font-family:'Presentation', sans-serif;
   }
+  /* 위쪽 경계 부드럽게: 진입할 때만 보이는 흰색 그라데이션 */
+  .hb-fade {
+    position:absolute; top:0; left:0; right:0; height:55vh; z-index:5;
+    background:linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 100%);
+    pointer-events:none;
+  }
   .hb-inner { position:absolute; inset:0; }
+  /* MAC: 배경이 밝아 글씨가 안 보이므로 왼쪽에 어두운 그라데이션을 깔아 가독성 확보 */
+  .hb.mac::before {
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:linear-gradient(90deg, rgba(0,0,0,.60) 0%, rgba(0,0,0,.42) 32%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 72%);
+  }
 
   .hb-text {
     position:absolute; top:50%; left:clamp(48px,6vw,110px);
@@ -225,12 +280,418 @@
   .hb-tools { display:flex; align-items:center; gap:13px; }  /* 아이콘 3개 균등 간격 */
   .hb-tools .tool-ic { height:34px; width:34px; border-radius:8px; display:block; }
 
-  .hb-mock { position:absolute; top:274px; bottom:225px; right:clamp(48px,6vw,150px); }
-  .hb-laptop { height:100%; width:auto; display:block; }
-  .hb-phone  { position:absolute; right:-40px; bottom:-30px; height:82%; width:auto;
+  .hb-mock { position:absolute; top:90px; bottom:75px; right:clamp(16px,3.5vw,85px); }
+  .hb-laptop { position:relative; height:100%; width:auto; display:inline-block; }
+  /* 프레임을 스크린샷 위에 올려서, 화면 밖으로 넘치는 부분은 베젤이 가림 */
+  .hb-laptop .frame { height:100%; width:auto; display:block; position:relative; z-index:2; }
+  /* 노트북 화면 영역(프레임 대비 %): 필요시 이 4개 값만 조절.
+     프레임 뒤에 깔리므로 실제 화면보다 살짝 크게(오버스캔) 잡아 흰 틈을 없앰 */
+  .hb-laptop {
+    --sx:24%;     /* 화면 왼쪽 시작 */
+    --sy:20.7%;   /* 화면 위쪽 시작 */
+    --sw:52%;     /* 화면 가로 */
+    --sh:52%;     /* 화면 세로 */
+  }
+  .hb-screen {
+    position:absolute; left:var(--sx); top:var(--sy); width:var(--sw); height:var(--sh);
+    overflow:hidden; border-radius:18px; z-index:1;   /* 프레임(z-index:2) 뒤 / 모서리 둥글게 해 삐져나온 부분 가림 */
+  }
+  .hb-screen img { width:100%; height:auto; display:block; will-change:transform; }
+  .hb-phone  { position:absolute; right:12.5%; bottom:6%; height:55%; width:auto; z-index:2;
     filter:drop-shadow(0 18px 40px rgba(0,0,0,.45)); }
 
+  /* ===================== 5. Redesign Process (As-Is / To-Be) ===================== */
+  .process {
+    background:#F7F4F1; min-height:100vh;
+    padding:200px clamp(18px,2vw,40px) clamp(40px,4vw,72px);
+    font-family:'Presentation', sans-serif;
+    display:flex; align-items:center;
+  }
+  .process-inner { width:100%; max-width:1880px; margin:0 auto; }
+  /* Aesop 문제점 분석: 배경 #F6F2EE · 글씨 #4A3C33 */
+  .proc-aesop { background:#F6F2EE; }
+  .proc-aesop .process-title,
+  .proc-aesop .process-over,
+  .proc-aesop .pitem h3,
+  .proc-aesop .pitem p,
+  .proc-aesop .pnum { color:#4A3C33; }
+  .proc-aesop .pcard-label { background:#4A3C33; color:#F6F2EE; }
+  .proc-aesop .process-arrow { background:#4A3C33; color:#ffffff; }
+  /* To-Be 이미지: 하단 푸터 부분을 잘라서 표시 (컨테이너 비율로 크롭) */
+  .proc-aesop .process-grid { align-items:start; }
+  .proc-aesop .process-grid > .pcard:last-child .pshot { align-self:start; overflow:hidden; aspect-ratio:2475 / 4530; }
+  .proc-aesop .process-grid > .pcard:last-child .pshot img { width:100%; height:auto; object-fit:unset; }
+
+  /* Aesop To-Be Design: 두 색 적용 */
+  .tobe-aesop { background:#F6F2EE; }
+  .tobe-aesop .tobe-title,
+  .tobe-aesop .tobe-sub,
+  .tobe-aesop .tb-head h3,
+  .tobe-aesop .tb-item li { color:#4A3C33; }
+  .tobe-aesop .tb-item li::before,
+  .tobe-aesop .tb-num { background:#4A3C33; }
+  .tobe-aesop .tb-item::after { border-color:#4A3C33; }
+  .tobe-aesop .tb-item::before { border-top-color:#4A3C33; }
+
+  /* Aesop Design System: 두 색 적용 */
+  .dsys-aesop { background:#F6F2EE; }
+  .dsys-aesop .ds-aa .aa,
+  .dsys-aesop .ds-aa .a2z .t,
+  .dsys-aesop .ds-aa .a2z .d,
+  .dsys-aesop .ds-w .kr,
+  .dsys-aesop .ds-w .en { font-family:'Pretendard', sans-serif; }
+  .dsys-aesop .dsys-title,
+  .dsys-aesop .ds-h .n,
+  .dsys-aesop .ds-aa .aa,
+  .dsys-aesop .ds-aa .a2z .t { color:#4A3C33; }
+  .dsys-aesop .ds-card { border:1px solid #e7ddd0; box-shadow:0 18px 46px rgba(74,60,51,.06); }
+  .dsys-aesop .ds-btn-primary { background:#4A3C33; }
+  .dsys-aesop .ds-btn-ghost { color:#4A3C33; border-color:#4A3C33; }
+  .dsys-aesop .ds-page .on,
+  .dsys-aesop .ds-check .on { background:#4A3C33; }
+  .dsys-aesop .ds-radio i { border-color:#4A3C33; }
+  .dsys-aesop .ds-radio .on::after { background:#4A3C33; }
+  /* Aesop UI 버튼: 주요(진갈색 채움) / 보조(진갈색 선) / 아래 큰 보조버튼(위 두 버튼 폭에 맞춤) */
+  .dsys-aesop .ds-uirow.aesop-uirow { display:flex; align-items:center; justify-content:center; }
+  .aui-group { display:inline-flex; flex-direction:column; gap:clamp(13px,1.5vw,20px); }
+  .aui-row { display:flex; gap:clamp(12px,1.4vw,20px); }
+  .aui-btn { font-family:inherit; font-weight:600; font-size:clamp(14px,1vw,16px); padding:13px 28px; border:1.5px solid #4A3C33; border-radius:10px; cursor:pointer; }
+  .aui-btn.aui-fill { background:#4A3C33; color:#F6F2EE; }
+  .aui-btn.aui-line { background:transparent; color:#4A3C33; }
+  .aui-btn.aui-wide { width:100%; padding:14px 28px; border-radius:0; }
+
+  /* Tracksy 상세: 목업 없어 일반 스크롤(고정 구간 제거) */
+  .hb-solo { height:100vh; }
+
+  /* Tracksy: 배경 #F0EEFD · 글씨 #723BE4 */
+  .proc-tracksy { background:#F0EEFD; }
+  .proc-tracksy .process-title,
+  .proc-tracksy .process-over,
+  .proc-tracksy .pitem h3,
+  .proc-tracksy .pitem p,
+  .proc-tracksy .pnum { color:#723BE4; }
+  .proc-tracksy .pcard-label { background:#723BE4; color:#F0EEFD; }
+  .proc-tracksy .process-arrow { background:#723BE4; color:#ffffff; }
+  /* Tracksy 프로젝트 개요 */
+  .proc-tracksy .process-inner { max-width:1500px; }
+  .tov-top { display:flex; gap:clamp(30px,4vw,80px); align-items:flex-start; margin-bottom:clamp(34px,3.5vw,60px); }
+  .tov-lead { flex:1; min-width:0; }
+  .tov-title { font-size:clamp(30px,3vw,48px); font-weight:700; color:#2b2540; line-height:1.25; margin:12px 0 0; }
+  .tov-title b { color:#723BE4; font-weight:800; }
+  .tov-line { display:block; width:56px; height:2px; background:#723BE4; margin:clamp(22px,2vw,30px) 0; }
+  .tov-desc { font-size:clamp(15px,1.1vw,18px); line-height:1.9; color:#5a4d7d; margin-bottom:clamp(30px,3vw,48px); }
+  .tov-bg-head { display:flex; align-items:center; gap:11px; margin-bottom:14px; }
+  .tov-bg-title { font-size:16px; font-weight:700; color:#723BE4; }
+  .tov-bg ul { list-style:none; display:flex; flex-direction:column; gap:11px; padding-left:2px; }
+  .tov-bg li { position:relative; padding-left:15px; font-size:14px; line-height:1.55; color:#5a4d7d; }
+  .tov-bg li::before { content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:#a98ce8; }
+  .tov-bg .tov-ic { width:38px; height:38px; }
+  .tov-ic { flex:0 0 auto; width:clamp(42px,3.2vw,50px); height:clamp(42px,3.2vw,50px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
+  .tov-ic svg { width:52%; height:52%; }
+
+  .tov-char { flex:0 0 clamp(320px,32vw,500px); position:relative; align-self:center; min-height:360px; display:flex; align-items:center; justify-content:center; }
+  .tov-blob { position:absolute; width:74%; aspect-ratio:1; border-radius:50%; background:#E7E0FB; right:6%; top:50%; transform:translateY(-50%); }
+  .tov-char img { position:relative; z-index:2; width:62%; height:auto; display:block; }
+  .tov-bubble { position:absolute; z-index:3; left:0; top:30%; background:#ffffff; border-radius:16px; padding:15px 22px; font-size:clamp(13px,1vw,16px); font-weight:600; color:#3a3357; line-height:1.5; box-shadow:0 12px 30px rgba(114,59,228,.14); }
+
+  .tov-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,1.8vw,28px); align-items:start; }
+  .tov-card { background:#ffffff; border-radius:20px; padding:clamp(26px,2.4vw,40px); box-shadow:0 18px 46px rgba(114,59,228,.06); }
+  .tov-card-head { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:clamp(22px,2.2vw,32px); }
+  .tov-card-head h3 { font-size:clamp(19px,1.5vw,24px); font-weight:800; color:#723BE4; }
+  .tov-card ul { list-style:none; display:flex; flex-direction:column; gap:14px; }
+  .tov-card li { position:relative; padding-left:17px; font-size:clamp(14px,1.05vw,16px); line-height:1.6; color:#5a4d7d; }
+  .tov-card li::before { content:''; position:absolute; left:0; top:9px; width:5px; height:5px; border-radius:50%; background:#a98ce8; }
+  .tov-feats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .tov-feat { display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; font-size:clamp(12px,0.92vw,14px); font-weight:600; color:#5a4d7d; line-height:1.4; }
+  .tov-fic { width:clamp(48px,4vw,62px); height:clamp(48px,4vw,62px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
+  .tov-fic svg { width:50%; height:50%; }
+
+  .tobe-tracksy { background:#F0EEFD; }
+  .tobe-tracksy .tobe-title,
+  .tobe-tracksy .tobe-sub,
+  .tobe-tracksy .tb-head h3,
+  .tobe-tracksy .tb-item li { color:#723BE4; }
+  .tobe-tracksy .tb-item li::before,
+  .tobe-tracksy .tb-num { background:#723BE4; }
+  .tobe-tracksy .tb-item::after { border-color:#723BE4; }
+  .tobe-tracksy .tb-item::before { border-top-color:#723BE4; }
+
+  .dsys-tracksy { background:#F0EEFD; }
+  .dsys-tracksy .dsys-title,
+  .dsys-tracksy .ds-h .n,
+  .dsys-tracksy .ds-aa .aa,
+  .dsys-tracksy .ds-aa .a2z .t { color:#723BE4; }
+  .dsys-tracksy .ds-card { border:1px solid #e3ddf8; box-shadow:0 18px 46px rgba(114,59,228,.07); }
+  .dsys-tracksy .ds-btn-primary { background:#723BE4; }
+  .dsys-tracksy .ds-btn-ghost { color:#723BE4; border-color:#723BE4; }
+  .dsys-tracksy .ds-page .on,
+  .dsys-tracksy .ds-check .on { background:#723BE4; }
+  .dsys-tracksy .ds-radio i { border-color:#723BE4; }
+  .dsys-tracksy .ds-radio .on::after { background:#723BE4; }
+
+  /* Judy game: 배경 #FDF3F8 · 글씨 #FF60A2 */
+  .proc-judy { background:#FDF3F8; }
+  .proc-judy .process-title,
+  .proc-judy .process-over,
+  .proc-judy .pitem h3,
+  .proc-judy .pitem p,
+  .proc-judy .pnum { color:#FF60A2; }
+  .proc-judy .pcard-label { background:#FF60A2; color:#FFFFFF; }
+  .proc-judy .process-arrow { background:#FF60A2; color:#FFFFFF; }
+
+  .tobe-judy { background:#FDF3F8; }
+  .tobe-judy .tobe-title,
+  .tobe-judy .tobe-sub,
+  .tobe-judy .tb-head h3,
+  .tobe-judy .tb-item li { color:#FF60A2; }
+  .tobe-judy .tb-item li::before,
+  .tobe-judy .tb-num { background:#FF60A2; }
+  .tobe-judy .tb-item::after { border-color:#FF60A2; }
+  .tobe-judy .tb-item::before { border-top-color:#FF60A2; }
+
+  .dsys-judy { background:#FDF3F8; }
+  .dsys-judy .dsys-title,
+  .dsys-judy .ds-h .n,
+  .dsys-judy .ds-aa .aa,
+  .dsys-judy .ds-aa .a2z .t { color:#FF60A2; }
+  .dsys-judy .ds-card { border:1px solid #f6dce9; box-shadow:0 18px 46px rgba(255,96,162,.07); }
+  .dsys-judy .ds-btn-primary { background:#FF60A2; }
+  .dsys-judy .ds-btn-ghost { color:#FF60A2; border-color:#FF60A2; }
+  .dsys-judy .ds-page .on,
+  .dsys-judy .ds-check .on { background:#FF60A2; }
+  .dsys-judy .ds-radio i { border-color:#FF60A2; }
+  .dsys-judy .ds-radio .on::after { background:#FF60A2; }
+  /* Judy UI: 원형 화살표 버튼 + 주요/보조 버튼 */
+  .dsys-judy .ds-uirow.judy-uirow { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(16px,2vw,30px); }
+  .jui-arrows { display:flex; gap:clamp(18px,2.2vw,36px); }
+  .jui-circle { width:clamp(54px,4.6vw,72px); height:clamp(54px,4.6vw,72px); border-radius:50%; background:#FF60A2; color:#ffffff; border:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+  .jui-circle svg { width:46%; height:46%; }
+  .jui-btn { border:0; cursor:pointer; background:#FF60A2; color:#ffffff; font-family:inherit; font-weight:700; border-radius:999px; }
+  .jui-primary { padding:clamp(16px,1.6vw,22px) clamp(46px,5vw,72px); font-size:clamp(19px,1.7vw,26px); }
+  .jui-secondary { padding:clamp(11px,1.1vw,15px) clamp(28px,3vw,42px); font-size:clamp(15px,1.2vw,18px); }
+
+  /* MAC 문제점 분석: 흰 배경 · 검정 글씨 */
+  .proc-mac { background:#ffffff; }
+  .proc-mac .process-title { color:#111111; }
+  .proc-mac .process-over { color:#555555; }
+  .proc-mac .pcard { border:1px solid #eee; }
+  .proc-mac .pitem h3 { color:#111111; }
+  .proc-mac .pitem p { color:#333333; }
+  .proc-mac .pcard-label { background:#111111; color:#ffffff; }
+  .proc-mac .pnum { color:#111111; }
+  .proc-mac .process-arrow { background:#111111; color:#ffffff; }
+  /* As-Is 이미지 위에 상단 메뉴바 확대 이미지를 오버레이 */
+  .pshot.mac-asis { position:relative; overflow:visible; }
+  .mac-asis .pshot-zoom {
+    position:absolute; left:50%; top:4%; transform:translateX(-50%);
+    width:110%; height:auto; border-radius:0; border:1px solid #ddd;
+    box-shadow:0 14px 34px rgba(0,0,0,.30);
+  }
+  .process-over {
+    font-size:clamp(13px,1vw,16px); letter-spacing:.28em; font-weight:600;
+    color:#9c8873; margin-bottom:16px;
+  }
+  .process-title {
+    font-size:clamp(30px,3vw,46px); font-weight:800; color:#633418;
+    margin-bottom:clamp(40px,4.5vw,68px);
+  }
+  .process-grid {
+    display:grid; grid-template-columns:1fr auto 1fr;
+    align-items:stretch; gap:clamp(16px,1.8vw,30px);
+  }
+  .pcard {
+    background:#ffffff; border-radius:18px;
+    padding:clamp(14px,1.1vw,20px) clamp(14px,1.1vw,20px) clamp(32px,3vw,50px);
+    box-shadow:0 20px 50px rgba(80,55,35,.07);
+  }
+  .pcard-label {
+    display:inline-block; background:#E7DCCD; color:#633418;
+    font-weight:700; font-size:clamp(16px,1.25vw,21px);
+    padding:8px 26px; border-radius:12px; margin-bottom:clamp(18px,1.6vw,26px);
+  }
+  .pcard-body { display:flex; gap:clamp(20px,1.8vw,32px); align-items:stretch; }
+  .pshot {
+    flex:0 0 55%; border-radius:10px; overflow:hidden;
+    border:1px solid #ece5db;
+  }
+  .pshot img { width:100%; height:auto; display:block; }
+  .plist {
+    flex:1; display:flex; flex-direction:column;
+    justify-content:space-between; gap:clamp(18px,1.8vw,28px);
+    padding:clamp(6px,1vw,18px) 0;
+  }
+  .pitem .pnum { color:#633418; font-weight:700; font-size:clamp(15px,1.1vw,18px); margin-right:11px; }
+  .pitem h3 { display:inline; font-size:clamp(16px,1.25vw,20px); font-weight:700; color:#2a2a2a; }
+  .pitem .pline { height:1px; background:#f1ece5; margin:13px 0; }
+  .pitem p { font-size:clamp(13px,1.02vw,16px); line-height:1.75; color:#8a8a8a; }
+  .process-arrow {
+    align-self:center; flex:0 0 auto;
+    width:clamp(44px,3.2vw,56px); height:clamp(44px,3.2vw,56px);
+    border-radius:50%; background:#633418; color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:clamp(20px,1.5vw,25px);
+  }
+
+  /* ===================== 6. To-Be Design (전체 페이지 설명) ===================== */
+  .tobe {
+    background:#F7F4F1; min-height:100vh;
+    padding:200px clamp(28px,5vw,110px) clamp(52px,5.5vw,100px);
+    font-family:'Presentation', sans-serif;
+  }
+  .tobe-inner { max-width:1360px; margin:0 auto; }
+  /* MAC To-Be Design: 흰 배경 · 검정 글씨 */
+  .tobe-mac { background:#ffffff; }
+  .tobe-mac .tobe-title { color:#111111; }
+  .tobe-mac .tobe-sub { color:#555555; }
+  .tobe-mac .tb-head h3 { color:#111111; }
+  .tobe-mac .tb-item li { color:#333333; }
+  .tobe-mac .tb-item li::before { background:#111111; }
+  .tobe-mac .tb-num { background:#111111; }
+  .tobe-mac .tb-item::after { border-color:#111111; }
+  .tobe-title { font-size:clamp(30px,3vw,46px); font-weight:800; color:#3a2a1e; }
+  .tobe-sub { font-size:clamp(14px,1.1vw,18px); color:#8a8a8a; margin-top:16px; margin-bottom:clamp(40px,4.5vw,66px); }
+
+  .tobe-body { --tg:clamp(64px,6vw,120px); display:flex; gap:var(--tg); align-items:stretch; justify-content:center; position:relative; }
+  .tobe-shot {
+    flex:0 0 clamp(440px,48vw,800px); align-self:flex-start;
+    border-radius:12px; overflow:hidden; border:1px solid #ece5db;
+    box-shadow:0 20px 55px rgba(80,55,35,.10);
+  }
+  .tobe-shot img { width:100%; height:auto; display:block; }
+
+  /* 각 항목을 해당 섹션 세로 중앙에 배치 */
+  .tobe-list { position:relative; flex:0 0 clamp(340px,26vw,440px); }
+  .tb-item { position:absolute; left:0; right:0; top:var(--top,50%); transform:translateY(-50%); }
+  /* 이미지 가장자리에 걸친 점 + 번호까지 잇는 점선 */
+  .tb-item::before {
+    content:''; position:absolute; top:50%; transform:translateY(-50%);
+    left:calc(-1 * var(--tg) + 9px); width:calc(var(--tg) - 22px); height:0;
+    border-top:1.5px dashed #c3b3a2;
+  }
+  .tb-item::after {
+    content:''; position:absolute; top:50%; transform:translateY(-50%); box-sizing:border-box;
+    left:calc(-1 * var(--tg) - 6px); width:15px; height:15px;
+    border-radius:50%; background:#fff; border:2.5px solid #633418;
+  }
+  .tb-head { display:flex; align-items:center; gap:14px; margin-bottom:15px; }
+  .tb-num {
+    flex:0 0 auto; width:clamp(26px,2vw,32px); height:clamp(26px,2vw,32px);
+    border-radius:50%; background:#633418; color:#fff; font-weight:700;
+    font-size:clamp(12px,0.95vw,15px); display:flex; align-items:center; justify-content:center;
+  }
+  .tb-head h3 { font-size:clamp(19px,1.7vw,26px); font-weight:700; color:#2a2320; }
+  .tb-item ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .tb-item li {
+    position:relative; padding-left:18px;
+    font-size:clamp(14px,1.05vw,17px); color:#6a6a6a; line-height:1.65;
+  }
+  .tb-item li::before {
+    content:''; position:absolute; left:0; top:9px; width:5px; height:5px;
+    border-radius:50%; background:#b8a693;
+  }
+
+  /* ===================== 7. Design System ===================== */
+  .dsys { background:#F7F4F1; min-height:100vh; padding:200px clamp(28px,5vw,110px) clamp(48px,5vw,92px); font-family:'Presentation', sans-serif; }
+  .dsys-inner { max-width:1460px; margin:0 auto; }
+  /* MAC Design System: 흰 배경 · 검정 글씨 */
+  .dsys-mac { background:#ffffff; }
+  .dsys-mac .dsys-title { color:#111111; }
+  .dsys-mac .ds-card { border:1px solid #eeeeee; box-shadow:0 18px 46px rgba(0,0,0,.05); }
+  .dsys-mac .ds-h .n { color:#111111; }
+  .dsys-mac .ds-aa .aa { color:#111111; }
+  .dsys-mac .ds-btn-primary { background:#111111; }
+  .dsys-mac .ds-btn-ghost { color:#111111; border-color:#111111; }
+  .dsys-mac .ds-page .on { background:#111111; }
+  .dsys-mac .ds-check .on { background:#111111; }
+  .dsys-mac .ds-radio i { border-color:#111111; }
+  .dsys-mac .ds-radio .on::after { background:#111111; }
+  /* MAC Typography는 Freesentation(Presentation) 폰트 사용 */
+  .dsys-mac .ds-aa .aa,
+  .dsys-mac .ds-aa .a2z .t,
+  .dsys-mac .ds-aa .a2z .d,
+  .dsys-mac .ds-w .kr,
+  .dsys-mac .ds-w .en { font-family:'Presentation', sans-serif; }
+  /* MAC UI Elements 레이아웃 */
+  .dsys-mac .ds-uirow.mac-uirow {
+    display:grid; grid-template-columns:auto auto;
+    justify-content:center; align-content:center; justify-items:center; align-items:center;
+    column-gap:clamp(16px,1.6vw,30px); row-gap:clamp(18px,2vw,30px);
+  }
+  .mui-btn { font-family:inherit; font-weight:600; font-size:clamp(14px,1vw,16px); cursor:pointer; padding:13px 28px; border:1.5px solid #111111; border-radius:0; }
+  .mui-btn.mui-fill { background:#111111; color:#ffffff; }
+  .mui-btn.mui-line { background:#ffffff; color:#111111; }
+  .mui-btn.mui-pill { border-radius:999px; padding:13px 32px; }
+  .mui-dd { display:inline-flex; align-items:center; gap:14px; font-family:inherit; font-weight:500; font-size:clamp(14px,1vw,16px); color:#333333; background:#ffffff; border:1.5px solid #999999; border-radius:4px; padding:13px 18px; cursor:pointer; }
+  .mui-dd svg { width:16px; height:16px; }
+  .dsys-mac .ds-page .off { border-color:#999999; color:#333333; }
+  .dsys-mac .ds-page span { width:50px; height:50px; border-radius:8px; font-size:17px; }
+  .dsys-title { font-size:clamp(30px,3vw,46px); font-weight:800; color:#2a2320; margin-bottom:clamp(28px,3.4vw,50px); }
+  .dsys-grid { display:flex; align-items:stretch; gap:clamp(16px,1.5vw,26px); }
+  .ds-card { background:#fff; border-radius:20px; padding:clamp(20px,1.7vw,32px); box-shadow:0 18px 46px rgba(80,55,35,.06); }
+  .dsys-grid > .ds-card { flex:1; min-width:0; }
+  .ds-ui { display:flex; flex-direction:column; }
+  .ds-ui .ds-uirow { flex:1; display:grid; grid-template-columns:auto auto; justify-content:center; align-content:center; column-gap:clamp(24px,3vw,48px); row-gap:clamp(26px,3vw,44px); align-items:center; }
+  .ds-h { font-size:clamp(18px,1.35vw,22px); font-weight:500; color:#2a2320; margin-bottom:clamp(18px,1.8vw,26px); }
+  .ds-h .n { color:#c2a987; font-weight:700; margin-right:9px; }
+
+  /* Typography */
+  .ds-aa { display:flex; align-items:center; gap:clamp(18px,2vw,34px); padding-bottom:clamp(14px,1.4vw,22px); border-bottom:1px solid #eee7de; }
+  .ds-aa .aa { font-family:'A2z', sans-serif; font-size:clamp(58px,5.6vw,92px); font-weight:700; color:#633418; line-height:.9; }
+  .ds-aa .a2z .t { font-family:'A2z', sans-serif; font-size:clamp(22px,1.8vw,30px); color:#3a2f28; font-weight:500; margin-bottom:9px; }
+  .ds-aa .a2z .d { font-family:'A2z', sans-serif; font-size:clamp(13px,1vw,15px); color:#8a8a8a; line-height:1.6; }
+  .ds-w { display:flex; align-items:baseline; gap:16px; padding:clamp(11px,1.2vw,18px) 0; border-bottom:1px solid #eee7de; }
+  .ds-w:last-child { border-bottom:0; padding-bottom:0; }
+  .ds-w .kr { font-family:'A2z', sans-serif; font-size:clamp(19px,1.6vw,25px); color:#2a2320; }
+  .ds-w .en { font-family:'A2z', sans-serif; font-size:clamp(16px,1.25vw,20px); color:#2a2320; }
+
+  /* Color */
+  .ds-group + .ds-group { margin-top:clamp(18px,1.8vw,26px); }
+  .ds-glabel { font-size:clamp(13px,1vw,15px); color:#3a2f28; font-weight:600; margin-bottom:12px; }
+  .ds-swrow { display:flex; gap:14px; }
+  .ds-sw { flex:1; }
+  .ds-sw .chip { height:clamp(54px,5vw,74px); border-radius:12px; border:1px solid rgba(0,0,0,.07); }
+  .ds-sw .hex { font-size:clamp(11px,0.85vw,13px); color:#8a8a8a; margin-top:8px; }
+  .ds-gray .ds-sw .chip { height:clamp(44px,3.6vw,56px); border-radius:10px; }
+  .ds-gray .ds-sw .hex { font-size:clamp(9px,0.7vw,11px); margin-top:6px; }
+
+  /* Icons */
+  .ds-icongrid { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(9px,0.9vw,15px); }
+  .ds-ic { aspect-ratio:1; background:#fff; border:1px solid #f2ece3; border-radius:12px; box-shadow:0 4px 10px rgba(80,55,35,.07); display:flex; align-items:center; justify-content:center; color:#633418; }
+  .ds-ic svg { width:54%; height:54%; }
+  .ds-ic img { width:58%; height:58%; object-fit:contain; display:block; }
+
+  /* UI Elements */
+  .ds-uirow { display:flex; align-items:center; gap:clamp(22px,3vw,56px); flex-wrap:wrap; }
+  .ds-btn-primary { background:#633418; color:#fff; border:0; border-radius:8px; padding:13px 24px; font-size:clamp(14px,1vw,16px); font-weight:500; font-family:inherit; cursor:pointer; }
+  .ds-btn-ghost { background:#fff; color:#633418; border:1px solid #633418; border-radius:8px; padding:13px 24px; font-size:clamp(14px,1vw,16px); font-weight:500; font-family:inherit; cursor:pointer; }
+  .ds-page { display:flex; gap:8px; }
+  .ds-page span { width:34px; height:34px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .ds-page .on { background:#633418; color:#fff; }
+  .ds-page .off { border:1px solid #d8cbbb; color:#9a8a78; }
+  .ds-check { display:flex; gap:12px; }
+  .ds-check i { width:25px; height:25px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; color:#fff; }
+  .ds-check .on { background:#633418; }
+  .ds-check .off { border:1.5px solid #d3c6b6; }
+  .ds-radio { display:flex; gap:12px; align-items:center; }
+  .ds-radio i { width:20px; height:20px; border-radius:50%; border:2px solid #633418; display:inline-flex; align-items:center; justify-content:center; }
+  .ds-radio .on::after { content:''; width:9px; height:9px; border-radius:50%; background:#633418; }
+  .ds-radio .off { border-color:#d3c6b6; }
+  .ds-step { display:inline-flex; align-items:center; border:1px solid #e2d9cd; border-radius:8px; overflow:hidden; }
+  .ds-step button { width:40px; height:40px; border:0; background:#fff; font-size:18px; color:#3a2f28; font-family:inherit; cursor:pointer; }
+  .ds-step .val { width:44px; text-align:center; line-height:40px; border-left:1px solid #eee4d8; border-right:1px solid #eee4d8; font-size:15px; color:#2a2320; }
+
   @media (max-width:900px) {
+    .dsys-grid { flex-direction:column; }
+    .tobe-body { flex-direction:column; gap:40px; }
+    .tobe-shot { flex:none; width:100%; max-width:100%; }
+    .tobe-list { flex:none; width:100%; display:flex; flex-direction:column; gap:36px; }
+    .tb-item { position:static; transform:none; }
+    .tb-item::before, .tb-item::after { display:none; }
+    .process-grid { grid-template-columns:1fr; }
+    .tracksy-overview { grid-template-columns:1fr; }
+    .process-arrow { justify-self:center; transform:rotate(90deg); }
+    .pcard-body { flex-direction:column; }
+    .pshot { flex-basis:auto; max-height:340px; }
     .resume-body { flex-direction:column; }
     .divider { display:none; }
     .right { grid-template-columns:1fr; }
@@ -246,19 +707,35 @@
   <!-- ===== 인트로 (메인) ===== -->
   <div class="hero-wrap">
     <section class="hero">
-      <img src="images/portfolio.png" alt="Portfolio" id="heroImg">
+      <svg class="cover-svg" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="E-PORTFOLIO">
+        <rect width="1200" height="760" fill="#F7F4F1"/>
+        <!-- 폴더 뒤판 + 탭 -->
+        <path d="M40 250 L40 130 Q40 85 90 85 L440 85 Q468 85 486 108 L520 150 L1110 150 Q1160 150 1160 200 L1160 250 Z" fill="#E7E3DB"/>
+        <!-- 상단 작은 탭 -->
+        <path d="M700 150 L700 112 Q700 88 726 88 L1000 88 Q1026 88 1026 112 L1026 150 Z" fill="#2B2723"/>
+        <!-- 폴더 앞판 -->
+        <path d="M40 760 L40 285 Q40 235 92 235 L1108 235 Q1160 235 1160 285 L1160 760 Z" fill="#1A1815"/>
+        <!-- 반짝이 -->
+        <path d="M150 133 C158 157 164 163 188 171 C164 179 158 185 150 209 C142 185 136 179 112 171 C136 163 142 157 150 133 Z" fill="#FFFFFF"/>
+        <!-- 클립 -->
+        <rect x="1050" y="248" width="50" height="150" rx="25" fill="none" stroke="#F7F4F1" stroke-width="8"/>
+        <rect x="1063" y="268" width="24" height="98" rx="12" fill="none" stroke="#F7F4F1" stroke-width="8"/>
+        <!-- 텍스트 -->
+        <text x="104" y="500" font-family="'Pretendard', sans-serif" font-weight="800" font-size="165" letter-spacing="2" fill="#F7F4F1">PORTFOLIO</text>
+        <text x="112" y="575" font-family="'Pretendard', sans-serif" font-weight="500" font-size="28" letter-spacing="5" fill="#E7E3DB">CHAEWON PARK</text>
+      </svg>
+      <div class="scroll-ind" id="scrollInd">
+        <span>SCROLL</span>
+        <svg viewBox="0 0 22 12" fill="none" aria-hidden="true">
+          <path d="M2 2 L11 10 L20 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </section>
   </div>
 
   <!-- ===== 이력서(About) ===== -->
   <section class="resume">
     <div class="resume-inner">
-      <header class="topbar">
-        <span>2026</span>
-        <span>Designed by Chaewon park</span>
-        <span>UX/UI</span>
-      </header>
-
       <div class="resume-body">
         <!-- 왼쪽 -->
         <aside class="left">
@@ -365,15 +842,15 @@
         <div class="proj">
           <span class="num">05</span>
           <div>
-            <div class="proj-title">MathHub Website Design</div>
-            <div class="proj-sub"><span class="desc">MathHub 웹사이트 리디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
+            <div class="proj-title">TRACKSY App Design</div>
+            <div class="proj-sub"><span class="desc">TRACKSY 앱디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
           </div>
         </div>
         <div class="proj">
           <span class="num">06</span>
           <div>
-            <div class="proj-title">TRACKSY App Design</div>
-            <div class="proj-sub"><span class="desc">TRACKSY 앱디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
+            <div class="proj-title">Buja tour Website Design</div>
+            <div class="proj-sub"><span class="desc">부자관광 웹사이트 리디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
           </div>
         </div>
         <div class="proj">
@@ -388,14 +865,302 @@
   </section>
   </div>
 
-  <!-- ===== 프로젝트 상세 (Honeybrown) ===== -->
+  <!-- ===== 프로젝트 상세 (Tracksy) ===== -->
+  <div class="hb-wrap hb-solo">
+  <section class="hb mac" style="background:url('images/Tracksy_img.png') center/cover no-repeat;">
+    <div class="hb-fade"></div>
+    <div class="hb-inner">
+      <div class="hb-text">
+        <h2>Tracksy</h2>
+        <span class="hb-line"></span>
+        <p class="hb-sub">웹사이트 리디자인 팀프로젝트</p>
+        <p class="hb-desc">기록을 넘어 감정까지 담을 수 있는 러닝 기록 서비스를 기획한 <br> 프로젝트입니다. 러닝 데이터를 감성적인 카드로 편집하고 SNS에 <br> 쉽게 공유할 수 있도록 사용자 중심의 기록 경험을 설계하였습니다.</p>
+        <a class="hb-link" href="#" target="_blank" rel="noopener">Go to Website &rarr;</a>
+        <div class="hb-meta">
+          <div class="hb-row">
+            <span class="hb-label">Tool</span>
+            <span class="hb-div"></span>
+            <span class="hb-tools">
+              <img class="tool-ic" src="images/figma_2.png" alt="Figma">
+              <img class="tool-ic" src="images/claude.png" alt="Claude">
+              <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
+            </span>
+          </div>
+          <div class="hb-row">
+            <span class="hb-label">Contribution</span>
+            <span class="hb-div"></span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section class="process proc-tracksy">
+    <div class="process-inner">
+      <div class="tov-top">
+        <div class="tov-lead">
+          <p class="process-over">PROJECT OVERVIEW</p>
+          <h2 class="tov-title"><b>기록</b>을 넘어 <b>감정</b>을 <b>공유</b>하는<br>새로운 러닝 경험</h2>
+          <span class="tov-line"></span>
+          <p class="tov-desc">Tracksy는 러닝 기록을 감성적인 카드 형태로 편집하고<br>SNS에 쉽게 공유할 수 있도록 기획한 러닝 다이어리 앱입니다.<br>단순한 운동 기록을 넘어 사용자의 감정과 개성을 함께 담아낼 수 있는<br>새로운 러닝 경험을 제공합니다.</p>
+          <div class="tov-bg">
+            <div class="tov-bg-head">
+              <span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.5.4.8 1 .8 1.7V16h6v-.7c0-.7.3-1.3.8-1.7A6 6 0 0 0 12 3z"/></svg></span>
+              <span class="tov-bg-title">Background</span>
+            </div>
+            <ul>
+              <li>기존 러닝 앱은 수치 중심의 기록에 집중되어<br>사용자의 감정과 개성을 표현하기 어렵습니다.</li>
+              <li>2025년 러닝 인구 1,000만 시대,<br>기록을 시각적으로 편집하고 공유하려는 니즈가<br>더욱 증가하고 있습니다.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tov-char">
+          <span class="tov-blob"></span>
+          <div class="tov-bubble">오늘 러닝도<br>예쁘게 기록하고 싶어!</div>
+          <img src="images/Tracksy_01.png" alt="Tracksy 캐릭터">
+        </div>
+      </div>
+
+      <div class="tov-cards">
+        <div class="tov-card">
+          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="5" r="2"/><path d="M9.5 8l3.5-1.5 2.5 3 2.5 1.5M13 9.5l-1.5 4 3 2.5.5 3M11.5 13.5L8 15l-2.5-1"/></svg></span><h3>Target</h3></div>
+          <ul>
+            <li>20-30대 러닝 입문자</li>
+            <li>러닝 기록을 SNS에 공유하는 사용자</li>
+            <li>감성적인 운동 기록을 선호하는 사용자</li>
+            <li>꾸준한 러닝 습관을 만들고 싶은 사용자</li>
+          </ul>
+        </div>
+        <div class="tov-card">
+          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9-8.8C1.6 7.7 4 5 7 5c2 0 3.2 1.1 5 3 1.8-1.9 3-3 5-3 3 0 5.4 2.7 4 6.2-2 4.4-9 8.8-9 8.8z"/></svg></span><h3>Needs</h3></div>
+          <ul>
+            <li>나만의 스타일로 러닝 기록을 남기고 싶어요</li>
+            <li>감성적인 러닝 카드를 만들고 싶어요</li>
+            <li>SNS에 쉽게 공유하고 싶어요</li>
+            <li>꾸준히 러닝을 기록하고 싶어요</li>
+          </ul>
+        </div>
+        <div class="tov-card">
+          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.8-4.3 4.1 1 5.8L12 22l-5.2-2.7 1-5.8-4.3-4.1 5.9-.8z"/></svg></span><h3>Core Features</h3></div>
+          <div class="tov-feats">
+            <div class="tov-feat"><span class="tov-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2.5"/><path d="M12 4v4M2 13v2M22 13v2"/><circle cx="12" cy="4" r="1"/><path d="M9.5 13h.01M14.5 13h.01M9.5 16h5"/></svg></span><span>AI<br>러닝일지</span></div>
+            <div class="tov-feat"><span class="tov-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h4M7 14h7M15 10h2"/></svg></span><span>러닝<br>카드 디자인</span></div>
+            <div class="tov-feat"><span class="tov-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V6a2 2 0 0 1 2-2h2M4 16v2a2 2 0 0 0 2 2h2M20 8V6a2 2 0 0 0-2-2h-2M20 16v2a2 2 0 0 1-2 2h-2M7 12h10"/></svg></span><span>OCR<br>자동입력</span></div>
+            <div class="tov-feat"><span class="tov-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.4"/><circle cx="17" cy="6" r="2.4"/><circle cx="17" cy="18" r="2.4"/><path d="M8.1 10.9l6.8-3.7M8.1 13.1l6.8 3.7"/></svg></span><span>SNS<br>공유</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tobe tobe-tracksy">
+    <div class="tobe-inner">
+      <h2 class="tobe-title">To-Be Design</h2>
+      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
+      <div class="tobe-body">
+        <div class="tobe-shot"><img src="images/honeybrown_mockup_img.png" alt="리디자인 전체 페이지"></div>
+        <div class="tobe-list">
+          <div class="tb-item" style="--top:11%"><div class="tb-head"><span class="tb-num">01</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:29%"><div class="tb-head"><span class="tb-num">02</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:47%"><div class="tb-head"><span class="tb-num">03</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:65%"><div class="tb-head"><span class="tb-num">04</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:83%"><div class="tb-head"><span class="tb-num">05</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dsys dsys-tracksy">
+    <div class="dsys-inner">
+      <h2 class="dsys-title">Design System</h2>
+      <div class="dsys-grid">
+        <div class="ds-card ds-typo">
+          <p class="ds-h"><span class="n">01</span>Typography</p>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">A2Z</div><div class="d">폰트 설명을 입력하세요.<br>가독성 높은 브랜드 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">샘플 텍스트</span><span class="en" style="font-weight:600">SemiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:500">샘플 텍스트</span><span class="en" style="font-weight:500">Medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">샘플 텍스트</span><span class="en" style="font-weight:400">Regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">샘플 텍스트</span><span class="en" style="font-weight:300">Light</span></div>
+        </div>
+        <div class="ds-card ds-color">
+          <p class="ds-h"><span class="n">02</span>Color</p>
+          <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#F7F4F1"></div><div class="hex">#F7F4F1</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#633418"></div><div class="hex">#633418</div></div>
+          </div></div>
+          <div class="ds-group"><div class="ds-glabel">Sub colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#D5C9BC"></div><div class="hex">#D5C9BC</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+          </div></div>
+          <div class="ds-group ds-gray"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#D6D6D6"></div><div class="hex">#D6D6D6</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#868686"></div><div class="hex">#868686</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#7A7A7A"></div><div class="hex">#7A7A7A</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+          </div></div>
+        </div>
+        <div class="ds-card ds-ui">
+          <p class="ds-h"><span class="n">03</span>UI Elements</p>
+          <div class="ds-uirow">
+            <button class="ds-btn-primary">주요버튼</button>
+            <button class="ds-btn-ghost">보조버튼</button>
+            <div class="ds-page"><span class="on">1</span><span class="off">2</span></div>
+            <div class="ds-check"><i class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12l5 5L20 6"/></svg></i><i class="off"></i></div>
+            <div class="ds-radio"><i class="on"></i><i class="off"></i></div>
+            <div class="ds-step"><button>−</button><span class="val">1</span><button>+</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 프로젝트 상세 (복제 2) ===== -->
+  <div class="hb-wrap">
   <section class="hb">
+    <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
         <h2>Honeybrown</h2>
         <span class="hb-line"></span>
         <p class="hb-sub">웹사이트 리디자인</p>
-        <p class="hb-desc">자연이 주는 따뜻함과 공간의 가치를 담은 프리미엄 원목 가구 브랜드 '허니브라운'의 <br> 웹사이트 리디자인 프로젝트입니다. 브랜드 아이덴티티를 강화하고 사용자 중심의 <br> 정보 구조를 구축하여 더욱 직관적이고 편안한 쇼핑 경험을 제공하는 것을 목표로 하였습니다.</p>
+        <p class="hb-desc">자연이 주는 따뜻함과 공간의 가치를 담은 프리미엄 원목 가구 브랜드 '허니브라운'의 <br> 웹사이트 리디자인 프로젝트입니다. 브랜드 아이덴티티를 강화하고 사용자 중심의 <br> 정보 구조를 구축하여 더욱 직관적이고 편안한 쇼핑 경험을 제공하는 것을 목표로 <br> 하였습니다.</p>
+        <a class="hb-link" href="#" target="_blank" rel="noopener">Go to Website &rarr;</a>
+        <div class="hb-meta">
+          <div class="hb-row">
+            <span class="hb-label">Tool</span>
+            <span class="hb-div"></span>
+            <span class="hb-tools">
+              <img class="tool-ic" src="images/figma_2.png" alt="Figma">
+              <img class="tool-ic" src="images/claude.png" alt="Claude">
+              <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
+            </span>
+          </div>
+          <div class="hb-row">
+            <span class="hb-label">Contribution</span>
+            <span class="hb-div"></span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-mock">
+        <div class="hb-laptop">
+          <img class="frame" src="images/mock-up.png" alt="">
+          <div class="hb-screen"><img src="images/honeybrown_mockup_img.png" alt=""></div>
+        </div>
+        <img class="hb-phone" src="images/Honeybrown_iphone.png" alt="">
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section class="process">
+    <div class="process-inner">
+      <p class="process-over">REDESIGN PROCESS</p>
+      <h2 class="process-title">문제점 분석 &amp; 개선 방향</h2>
+      <div class="process-grid">
+        <div class="pcard">
+          <span class="pcard-label">As-Is</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/As-Is.png" alt="기존 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem"><div><span class="pnum">01</span><h3>문제점 제목</h3></div><div class="pline"></div><p>문제점 설명을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
+              <div class="pitem"><div><span class="pnum">02</span><h3>문제점 제목</h3></div><div class="pline"></div><p>문제점 설명을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
+              <div class="pitem"><div><span class="pnum">03</span><h3>문제점 제목</h3></div><div class="pline"></div><p>문제점 설명을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="pcard">
+          <span class="pcard-label">To-Be</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/To-Be.png" alt="리디자인 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem"><div><span class="pnum">01</span><h3>개선 제목</h3></div><div class="pline"></div><p>개선 내용을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
+              <div class="pitem"><div><span class="pnum">02</span><h3>개선 제목</h3></div><div class="pline"></div><p>개선 내용을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
+              <div class="pitem"><div><span class="pnum">03</span><h3>개선 제목</h3></div><div class="pline"></div><p>개선 내용을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tobe">
+    <div class="tobe-inner">
+      <h2 class="tobe-title">To-Be Design</h2>
+      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
+      <div class="tobe-body">
+        <div class="tobe-shot"><img src="images/honeybrown_mockup_img.png" alt="리디자인 전체 페이지"></div>
+        <div class="tobe-list">
+          <div class="tb-item" style="--top:11%"><div class="tb-head"><span class="tb-num">01</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:29%"><div class="tb-head"><span class="tb-num">02</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:47%"><div class="tb-head"><span class="tb-num">03</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:65%"><div class="tb-head"><span class="tb-num">04</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+          <div class="tb-item" style="--top:83%"><div class="tb-head"><span class="tb-num">05</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dsys">
+    <div class="dsys-inner">
+      <h2 class="dsys-title">Design System</h2>
+      <div class="dsys-grid">
+        <div class="ds-card ds-typo">
+          <p class="ds-h"><span class="n">01</span>Typography</p>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">A2Z</div><div class="d">폰트 설명을 입력하세요.<br>가독성 높은 브랜드 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">샘플 텍스트</span><span class="en" style="font-weight:600">SemiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:500">샘플 텍스트</span><span class="en" style="font-weight:500">Medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">샘플 텍스트</span><span class="en" style="font-weight:400">Regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">샘플 텍스트</span><span class="en" style="font-weight:300">Light</span></div>
+        </div>
+        <div class="ds-card ds-color">
+          <p class="ds-h"><span class="n">02</span>Color</p>
+          <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#F7F4F1"></div><div class="hex">#F7F4F1</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#633418"></div><div class="hex">#633418</div></div>
+          </div></div>
+          <div class="ds-group"><div class="ds-glabel">Sub colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#D5C9BC"></div><div class="hex">#D5C9BC</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+          </div></div>
+          <div class="ds-group ds-gray"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#D6D6D6"></div><div class="hex">#D6D6D6</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#868686"></div><div class="hex">#868686</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#7A7A7A"></div><div class="hex">#7A7A7A</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+          </div></div>
+        </div>
+        <div class="ds-card ds-ui">
+          <p class="ds-h"><span class="n">03</span>UI Elements</p>
+          <div class="ds-uirow">
+            <button class="ds-btn-primary">주요버튼</button>
+            <button class="ds-btn-ghost">보조버튼</button>
+            <div class="ds-page"><span class="on">1</span><span class="off">2</span></div>
+            <div class="ds-check"><i class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12l5 5L20 6"/></svg></i><i class="off"></i></div>
+            <div class="ds-radio"><i class="on"></i><i class="off"></i></div>
+            <div class="ds-step"><button>−</button><span class="val">1</span><button>+</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 프로젝트 상세 (Honeybrown) ===== -->
+  <div class="hb-wrap">
+  <section class="hb">
+    <div class="hb-fade" id="hbFade"></div>
+    <div class="hb-inner">
+      <div class="hb-text">
+        <h2>Honeybrown</h2>
+        <span class="hb-line"></span>
+        <p class="hb-sub">웹사이트 리디자인</p>
+        <p class="hb-desc">자연이 주는 따뜻함과 공간의 가치를 담은 프리미엄 원목 가구 브랜드 '허니브라운'의 <br> 웹사이트 리디자인 프로젝트입니다. 브랜드 아이덴티티를 강화하고 사용자 중심의 <br> 정보 구조를 구축하여 더욱 직관적이고 편안한 쇼핑 경험을 제공하는 것을 목표로 <br> 하였습니다.</p>
         <a class="hb-link" href="https://chaewonmeoww-art.github.io/Honeybrown/" target="_blank" rel="noopener">Go to Website &rarr;</a>
         <div class="hb-meta">
           <div class="hb-row">
@@ -416,58 +1181,562 @@
       </div>
 
       <div class="hb-mock">
-        <img class="hb-laptop" src="images/honeybrown_mockup.png" alt="Honeybrown 웹사이트">
+        <div class="hb-laptop">
+          <img class="frame" src="images/mock-up.png" alt="Honeybrown 웹사이트">
+          <div class="hb-screen"><img id="hbScreenImg" src="images/honeybrown_mockup_img.png" alt=""></div>
+        </div>
         <img class="hb-phone" src="images/Honeybrown_iphone.png" alt="Honeybrown 모바일">
       </div>
     </div>
   </section>
+  </div>
+
+  <!-- ===== Redesign Process (As-Is / To-Be) ===== -->
+  <section class="process">
+    <div class="process-inner">
+      <p class="process-over">REDESIGN PROCESS</p>
+      <h2 class="process-title">문제점 분석 &amp; 개선 방향</h2>
+
+      <div class="process-grid">
+        <!-- As-Is -->
+        <div class="pcard">
+          <span class="pcard-label">As-Is</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/As-Is.png" alt="기존 허니브라운 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem">
+                <div><span class="pnum">01</span><h3>복잡한 정보 구조</h3></div>
+                <div class="pline"></div>
+                <p>많은 정보가 한 화면에 노출되어<br>핵심 콘텐츠를 파악하기 어렵습니다.</p>
+              </div>
+              <div class="pitem">
+                <div><span class="pnum">02</span><h3>불필요한 개인결제 메뉴</h3></div>
+                <div class="pline"></div>
+                <p>일반 사용자와 무관한 메뉴로<br>탐색에 혼란을 줍니다.</p>
+              </div>
+              <div class="pitem">
+                <div><span class="pnum">03</span><h3>낮은 시각적 집중도</h3></div>
+                <div class="pline"></div>
+                <p>단조로운 디자인으로 핵심 콘텐츠가<br>눈에 띄지 않습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 화살표 -->
+        <div class="process-arrow">&rarr;</div>
+
+        <!-- To-Be -->
+        <div class="pcard">
+          <span class="pcard-label">To-Be</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/To-Be.png" alt="리디자인 허니브라운 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem">
+                <div><span class="pnum">01</span><h3>정보 구조 개선</h3></div>
+                <div class="pline"></div>
+                <p>핵심 정보 중심으로 재구성해<br>제품 탐색을 개선했습니다.</p>
+              </div>
+              <div class="pitem">
+                <div><span class="pnum">02</span><h3>메뉴 구조 최적화</h3></div>
+                <div class="pline"></div>
+                <p>메뉴를 정리해 탐색 흐름을<br>단순화했습니다.</p>
+              </div>
+              <div class="pitem">
+                <div><span class="pnum">03</span><h3>브랜드 아이덴티티 강화</h3></div>
+                <div class="pline"></div>
+                <p>일관된 디자인으로 브랜드와<br>콘텐츠를 강조했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== To-Be Design (전체 페이지 설명) ===== -->
+  <section class="tobe">
+    <div class="tobe-inner">
+      <h2 class="tobe-title">To-Be Design</h2>
+      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
+
+      <div class="tobe-body">
+        <div class="tobe-shot">
+          <img src="images/honeybrown_mockup_img.png" alt="리디자인 허니브라운 웹사이트 전체">
+        </div>
+
+        <div class="tobe-list">
+          <div class="tb-item" style="--top:11%">
+            <div class="tb-head"><span class="tb-num">01</span><h3>HERO</h3></div>
+            <ul>
+              <li>브랜드 아이덴티티를 강조하는 메인 비주얼 구성</li>
+              <li>대표 CTA버튼을 배치해 제품 페이지 이동 유도</li>
+            </ul>
+          </div>
+          <div class="tb-item" style="--top:29%">
+            <div class="tb-head"><span class="tb-num">02</span><h3>BEST PRODUCT</h3></div>
+            <ul>
+              <li>대표 상품만 선별하여 집중도 향상</li>
+              <li>카드형 레이아웃으로 탐색성 강화</li>
+              <li>'전체 제품 보기' 버튼 추가로 사용자 이동 동선 개선</li>
+            </ul>
+          </div>
+          <div class="tb-item" style="--top:47%">
+            <div class="tb-head"><span class="tb-num">03</span><h3>REVIEW</h3></div>
+            <ul>
+              <li>리뷰를 별도의 섹션으로 구성하여 신뢰성 강조</li>
+              <li>실제 공간 이미지를 함께 배치하여 제품 활용성을 직관적으로 전달</li>
+            </ul>
+          </div>
+          <div class="tb-item" style="--top:65%">
+            <div class="tb-head"><span class="tb-num">04</span><h3>SHOWROOM</h3></div>
+            <ul>
+              <li>직접체험, 소재 확인, 상담 가능 등의 핵심정보를 한눈에 제공</li>
+              <li>예약 버튼을 추가하여 행동 유도 강화</li>
+            </ul>
+          </div>
+          <div class="tb-item" style="--top:83%">
+            <div class="tb-head"><span class="tb-num">05</span><h3>NOTICE</h3></div>
+            <ul>
+              <li>공지사항과 상담 영역을 함께 배치하여 정보 접근성 향상</li>
+              <li>자주 확인하는 공지와 문의 정보를 함께 배치</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Design System ===== -->
+  <section class="dsys">
+    <div class="dsys-inner">
+      <h2 class="dsys-title">Design System</h2>
+      <div class="dsys-grid">
+
+        <!-- 01 Typography -->
+        <div class="ds-card ds-typo">
+          <p class="ds-h"><span class="n">01</span>Typography</p>
+          <div class="ds-aa">
+            <div class="aa">Aa</div>
+            <div class="a2z">
+              <div class="t">A2Z</div>
+              <div class="d">따뜻하고 편안한 분위기를<br>전달하는 가독성 높은 폰트입니다.</div>
+            </div>
+          </div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">허니브라운가구</span><span class="en" style="font-weight:600">SemiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:500">허니브라운가구</span><span class="en" style="font-weight:500">Medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">허니브라운가구</span><span class="en" style="font-weight:400">Regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">허니브라운가구</span><span class="en" style="font-weight:300">Light</span></div>
+        </div>
+
+        <!-- 02 Color -->
+        <div class="ds-card ds-color">
+          <p class="ds-h"><span class="n">02</span>Color</p>
+          <div class="ds-group">
+            <div class="ds-glabel">Main colors</div>
+            <div class="ds-swrow">
+              <div class="ds-sw"><div class="chip" style="background:#F7F4F1"></div><div class="hex">#F7F4F1</div></div>
+              <div class="ds-sw"><div class="chip" style="background:#633418"></div><div class="hex">#633418</div></div>
+            </div>
+          </div>
+          <div class="ds-group">
+            <div class="ds-glabel">Sub colors</div>
+            <div class="ds-swrow">
+              <div class="ds-sw"><div class="chip" style="background:#D5C9BC"></div><div class="hex">#D5C9BC</div></div>
+              <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+            </div>
+          </div>
+          <div class="ds-group ds-gray">
+            <div class="ds-glabel">Grayscale</div>
+            <div class="ds-swrow">
+              <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
+              <div class="ds-sw"><div class="chip" style="background:#D6D6D6"></div><div class="hex">#D6D6D6</div></div>
+              <div class="ds-sw"><div class="chip" style="background:#868686"></div><div class="hex">#868686</div></div>
+              <div class="ds-sw"><div class="chip" style="background:#7A7A7A"></div><div class="hex">#7A7A7A</div></div>
+              <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 UI Elements -->
+        <div class="ds-card ds-ui">
+          <p class="ds-h"><span class="n">04</span>UI Elements</p>
+          <div class="ds-uirow">
+            <button class="ds-btn-primary">주요버튼</button>
+            <button class="ds-btn-ghost">보조버튼</button>
+            <div class="ds-page"><span class="on">1</span><span class="off">2</span></div>
+            <div class="ds-check">
+              <i class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12l5 5L20 6"/></svg></i>
+              <i class="off"></i>
+            </div>
+            <div class="ds-radio"><i class="on"></i><i class="off"></i></div>
+            <div class="ds-step"><button>−</button><span class="val">1</span><button>+</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 프로젝트 상세 (MAC) ===== -->
+  <div class="hb-wrap mac-wrap">
+  <section class="hb mac" style="background:url('images/MAC_img.png') center/cover no-repeat;">
+    <div class="hb-fade"></div>
+    <div class="hb-inner">
+      <div class="hb-text">
+        <h2>M·A·C</h2>
+        <span class="hb-line"></span>
+        <p class="hb-sub">웹사이트 리디자인</p>
+        <p class="hb-desc">M·A·C만의 대담한 브랜드 아이덴티티를 현대적인 UI로 재해석한 웹사이트 <br> 리디자인 프로젝트입니다. 사용자의 제품 탐색과 컬렉션 경험을 개선하고, <br> 브랜드의 프리미엄 이미지를 더욱 효과적으로 전달할 수 있도록 사용자 중심의 <br> 인터페이스를 설계하였습니다.</p>
+        <a class="hb-link" href="https://chaewonmeoww-art.github.io/MAC/" target="_blank" rel="noopener">Go to Website &rarr;</a>
+        <div class="hb-meta">
+          <div class="hb-row">
+            <span class="hb-label">Tool</span>
+            <span class="hb-div"></span>
+            <span class="hb-tools">
+              <img class="tool-ic" src="images/figma_2.png" alt="Figma">
+              <img class="tool-ic" src="images/claude.png" alt="Claude">
+              <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
+            </span>
+          </div>
+          <div class="hb-row">
+            <span class="hb-label">Contribution</span>
+            <span class="hb-div"></span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-mock">
+        <div class="hb-laptop">
+          <img class="frame" src="images/mock-up.png" alt="MAC 웹사이트">
+          <div class="hb-screen"><img src="images/MAC_mockup_img.png" alt=""></div>
+        </div>
+        <img class="hb-phone" src="images/Honeybrown_iphone.png" alt="MAC 모바일">
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- ===== (MAC) Redesign Process ===== -->
+  <section class="process proc-mac">
+    <div class="process-inner">
+      <p class="process-over">REDESIGN PROCESS</p>
+      <h2 class="process-title">문제점 분석 &amp; 개선 방향</h2>
+      <div class="process-grid">
+        <div class="pcard">
+          <span class="pcard-label">As-Is</span>
+          <div class="pcard-body">
+            <div class="pshot mac-asis">
+              <img src="images/Mac_As-Is.png" alt="기존 M·A·C 웹사이트">
+              <img class="pshot-zoom" src="images/Mac_As-is_header_img.png" alt="상단 메뉴바 확대">
+            </div>
+            <div class="plist">
+              <div class="pitem"><div><span class="pnum">01</span><h3>복잡한 메뉴 구조</h3></div><div class="pline"></div><p>불필요하게 세분화된 메뉴 구성으로 인해<br>상단 내비게이션의 가독성이 떨어집니다.</p></div>
+              <div class="pitem"><div><span class="pnum">02</span><h3>정보 과부하</h3></div><div class="pline"></div><p>콘텐츠 간 간격이 부족하고 정보가 과도하게 배치되어<br>화면이 복잡하게 느껴집니다.</p></div>
+              <div class="pitem"><div><span class="pnum">03</span><h3>브랜드 아이덴티티 부족</h3></div><div class="pline"></div><p>오래된 레이아웃과 비주얼로 M·A·C만의<br>프리미엄 브랜드 이미지가 효과적으로 전달되지 않습니다.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="pcard">
+          <span class="pcard-label">To-Be</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/Mac_To-Be.png" alt="리디자인 M·A·C 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem"><div><span class="pnum">01</span><h3>메뉴 구조 최적화</h3></div><div class="pline"></div><p>유사한 메뉴를 통합하고<br>탐색 흐름을 직관적으로 개선하였습니다.</p></div>
+              <div class="pitem"><div><span class="pnum">02</span><h3>정보 구조 개선</h3></div><div class="pline"></div><p>콘텐츠 간 여백과 간격을 일관성 있게 개선하여 시각적<br>피로도를 줄이고 핵심 정보에 집중할 수 있도록 하였습니다.</p></div>
+              <div class="pitem"><div><span class="pnum">03</span><h3>브랜드 아이덴티티 강화</h3></div><div class="pline"></div><p>현대적인 레이아웃과 비주얼을 적용하여<br>M·A·C만의 브랜드 감성을 강조하였습니다.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== (MAC) To-Be Design ===== -->
+  <section class="tobe tobe-mac">
+    <div class="tobe-inner">
+      <h2 class="tobe-title">To-Be Design</h2>
+      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
+      <div class="tobe-body">
+        <div class="tobe-shot"><img src="images/MAC_mockup_img.png" alt="리디자인 M·A·C 전체 페이지"></div>
+        <div class="tobe-list">
+          <div class="tb-item" style="--top:13%"><div class="tb-head"><span class="tb-num">01</span><h3>HERO</h3></div><ul><li>브랜드 아이덴티티를 강조하는 대형 비주얼 구성</li><li>대표 제품과 CTA 버튼을 배치하여 제품 페이지 이동 유도</li><li>프로모션 배너를 함께 배치하여 구매를 유도</li></ul></div>
+          <div class="tb-item" style="--top:47%"><div class="tb-head"><span class="tb-num">02</span><h3>NEW COLLECTION</h3></div><ul><li>신제품 컬렉션을 별도 섹션으로 구성하여 주목도 향상</li><li>제품 정보와 CTA 버튼을 함께 구성해 구매 전환을 유도</li></ul></div>
+          <div class="tb-item" style="--top:72%"><div class="tb-head"><span class="tb-num">03</span><h3>MAKEUP GUIDE</h3></div><ul><li>3가지 피부 고민별 메이크업 팁을 슬라이드 형태로 구성</li><li>Before &amp; After 이미지로 제품 효과를 직관적으로 전달</li></ul></div>
+          <div class="tb-item" style="--top:86%"><div class="tb-head"><span class="tb-num">04</span><h3>MAKEUP SERVICE</h3></div><ul><li>메이크업 서비스를 메인 페이지에서 바로 예약 가능</li><li>예약 절차를 한 화면에 구성하여 접근성과 편의성 향상</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== (MAC) Design System ===== -->
+  <section class="dsys dsys-mac">
+    <div class="dsys-inner">
+      <h2 class="dsys-title">Design System</h2>
+      <div class="dsys-grid">
+        <div class="ds-card ds-typo">
+          <p class="ds-h"><span class="n">01</span>Typography</p>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">Freesentation</div><div class="d">깔끔하고 현대적인 디자인을 전달하는<br>높은 가독성의 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">맥</span><span class="en" style="font-weight:600">SemiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:500">맥</span><span class="en" style="font-weight:500">Medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">맥</span><span class="en" style="font-weight:400">Regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">맥</span><span class="en" style="font-weight:300">Light</span></div>
+        </div>
+        <div class="ds-card ds-color">
+          <p class="ds-h"><span class="n">02</span>Color</p>
+          <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#000000"></div><div class="hex">#000000</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
+          </div></div>
+          <div class="ds-group ds-gray"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#8B8B8B"></div><div class="hex">#8B8B8B</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#E1E1E1"></div><div class="hex">#E1E1E1</div></div>
+          </div></div>
+        </div>
+        <div class="ds-card ds-ui">
+          <p class="ds-h"><span class="n">03</span>UI Elements</p>
+          <div class="ds-uirow mac-uirow">
+            <button class="mui-btn mui-fill">주요버튼</button>
+            <button class="mui-btn mui-line">주요버튼</button>
+            <button class="mui-btn mui-fill mui-pill">보조버튼</button>
+            <button class="mui-btn mui-line mui-pill">보조버튼</button>
+            <button class="mui-dd">드롭다운 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="ds-page"><span class="on">1</span><span class="off">2</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- ===== 추가 프로젝트 3세트 (이미지·문구는 나중에 교체) ===== -->
+  <!-- 각 세트: 프로젝트 상세 + 문제점 분석 + To-Be + 디자인가이드 -->
+  <!-- ============================================================= -->
+
+  <!-- ===================== PROJECT 03 ===================== -->
+  <div class="hb-wrap">
+  <section class="hb mac" style="background:url('images/Aesop_img.png') center/cover no-repeat;">
+    <div class="hb-fade"></div>
+    <div class="hb-inner">
+      <div class="hb-text">
+        <h2>Aesop</h2>
+        <span class="hb-line"></span>
+        <p class="hb-sub">웹사이트 리디자인</p>
+        <p class="hb-desc">스킨케어 브랜드 Aesop의 브랜드 아이덴티티를 유지하면서, 제품 탐색과 <br> 콘텐츠 접근성을 개선한 웹사이트 리디자인 프로젝트입니다. 절제된 <br> 디자인과 사용자 중심의 인터페이스를 통해 브랜드 경험을 더욱 <br> 직관적으로 전달하는 것을 목표로 하였습니다.</p>
+        <a class="hb-link" href="#" target="_blank" rel="noopener">Go to Website &rarr;</a>
+        <div class="hb-meta">
+          <div class="hb-row"><span class="hb-label">Tool</span><span class="hb-div"></span>
+            <span class="hb-tools">
+              <img class="tool-ic" src="images/figma_2.png" alt="Figma">
+              <img class="tool-ic" src="images/claude.png" alt="Claude">
+              <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
+            </span>
+          </div>
+          <div class="hb-row"><span class="hb-label">Contribution</span><span class="hb-div"></span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="hb-mock">
+        <div class="hb-laptop">
+          <img class="frame" src="images/mock-up.png" alt="">
+          <div class="hb-screen"><img src="images/Aesop_mockup_img.png" alt=""></div>
+        </div>
+        <img class="hb-phone" src="images/project03_iphone.png" alt="">
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section class="process proc-aesop">
+    <div class="process-inner">
+      <p class="process-over">REDESIGN PROCESS</p>
+      <h2 class="process-title">문제점 분석 &amp; 개선 방향</h2>
+      <div class="process-grid">
+        <div class="pcard">
+          <span class="pcard-label">As-Is</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/Aesop_As-Is.png" alt="기존 Aesop 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem"><div><span class="pnum">01</span><h3>낮은 브랜드 몰입감</h3></div><div class="pline"></div><p>· 메인 비주얼과 콘텐츠의 연결성이 부족합니다.<br>· 브랜드 아이덴티티가 충분히 전달되지 않습니다.</p></div>
+              <div class="pitem"><div><span class="pnum">02</span><h3>복잡한 정보 구성</h3></div><div class="pline"></div><p>· 다양한 콘텐츠가 혼합되어 핵심 정보 파악이 어렵습니다.<br>· 제품 탐색 흐름이 직관적이지 않습니다.</p></div>
+              <div class="pitem"><div><span class="pnum">03</span><h3>낮은 콘텐츠 집중도</h3></div><div class="pline"></div><p>· 섹션 구분이 명확하지 않아 시선이 분산됩니다.<br>· 제품과 브랜드 스토리의 전달력이 떨어집니다.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="pcard">
+          <span class="pcard-label">To-Be</span>
+          <div class="pcard-body">
+            <div class="pshot"><img src="images/Aesop_mockup_img.png" alt="리디자인 Aesop 웹사이트"></div>
+            <div class="plist">
+              <div class="pitem"><div><span class="pnum">01</span><h3>브랜드 아이덴티티 강화</h3></div><div class="pline"></div><p>· 자연 친화적인 메인 비주얼로 브랜드 감성을 강조했습니다.<br>· 일관된 디자인으로 브랜드 경험을 강화했습니다.</p></div>
+              <div class="pitem"><div><span class="pnum">02</span><h3>정보 구조 개선</h3></div><div class="pline"></div><p>· 핵심 콘텐츠 중심으로 재구성하여 탐색 흐름을 단순화했습니다.<br>· 제품 정보를 직관적으로 확인할 수 있도록 구성했습니다.</p></div>
+              <div class="pitem"><div><span class="pnum">03</span><h3>콘텐츠 가독성 향상</h3></div><div class="pline"></div><p>· 섹션별 레이아웃을 명확하게 구분했습니다.<br>· 여백과 간격을 정리하여 콘텐츠 집중도를 높였습니다.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tobe tobe-aesop">
+    <div class="tobe-inner">
+      <h2 class="tobe-title">To-Be Design</h2>
+      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
+      <div class="tobe-body">
+        <div class="tobe-shot"><img src="images/Aesop_mockup_img.png" alt="리디자인 Aesop 전체 페이지"></div>
+        <div class="tobe-list">
+          <div class="tb-item" style="--top:11%"><div class="tb-head"><span class="tb-num">01</span><h3>HERO</h3></div><ul><li>브랜드 감성을 강조하는 메인 비주얼 구성</li><li>자연 친화적인 분위기로 브랜드 아이덴티티 전달</li></ul></div>
+          <div class="tb-item" style="--top:34%"><div class="tb-head"><span class="tb-num">02</span><h3>Featured Products</h3></div><ul><li>대표 제품을 한눈에 확인할 수 있도록 구성</li><li>핵심 제품을 강조하여 탐색 편의성 향상</li></ul></div>
+          <div class="tb-item" style="--top:50%"><div class="tb-head"><span class="tb-num">03</span><h3>Brand Story</h3></div><ul><li>브랜드 철학과 스토리를 감성적으로 전달</li><li>다양한 이미지를 활용해 브랜드 경험 강화</li></ul></div>
+          <div class="tb-item" style="--top:69%"><div class="tb-head"><span class="tb-num">04</span><h3>Collection</h3></div><ul><li>카테고리별 제품을 직관적으로 탐색 가능</li><li>일관된 카드형 레이아웃으로 가독성 향상</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dsys dsys-aesop">
+    <div class="dsys-inner">
+      <h2 class="dsys-title">Design System</h2>
+      <div class="dsys-grid">
+        <div class="ds-card ds-typo">
+          <p class="ds-h"><span class="n">01</span>Typography</p>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">Pretendard</div><div class="d">깔끔하고 균형 잡힌<br>높은 가독성의 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">이솝</span><span class="en" style="font-weight:600">SemiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">이솝</span><span class="en" style="font-weight:400">Regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">이솝</span><span class="en" style="font-weight:300">Light</span></div>
+        </div>
+        <div class="ds-card ds-color">
+          <p class="ds-h"><span class="n">02</span>Color</p>
+          <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#F6F2EE"></div><div class="hex">#F6F2EE</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#4A3C33"></div><div class="hex">#4A3C33</div></div>
+          </div></div>
+          <div class="ds-group"><div class="ds-glabel">Sub colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#735E55"></div><div class="hex">#735E55</div></div>
+          </div></div>
+        </div>
+        <div class="ds-card ds-ui">
+          <p class="ds-h"><span class="n">03</span>UI Elements</p>
+          <div class="ds-uirow aesop-uirow">
+            <div class="aui-group">
+              <div class="aui-row">
+                <button class="aui-btn aui-fill">주요버튼</button>
+                <button class="aui-btn aui-line">보조버튼</button>
+              </div>
+              <button class="aui-btn aui-line aui-wide">보조버튼</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECT 04 ===================== -->
+  <div class="hb-wrap">
+  <section class="hb mac" style="background:url('images/Judy_img.png') center/cover no-repeat;">
+    <div class="hb-fade"></div>
+    <div class="hb-inner">
+      <div class="hb-text">
+        <h2>Judy game</h2>
+        <span class="hb-line"></span>
+        <p class="hb-sub">웹사이트 기획 및 제작</p>
+        <p class="hb-desc">추억의 플래시 게임 '쥬디게임'을 소개하기 위해 기획 및 제작한 <br> 웹사이트 프로젝트입니다. 원작의 감성과 브랜드 아이덴티티를 <br> 유지하면서 사용자들이 게임의 다양한 콘텐츠를 쉽고 직관적으로 <br> 탐색할 수 있도록 설계하였습니다.</p>
+        <a class="hb-link" href="https://chaewonmeoww-art.github.io/judy/" target="_blank" rel="noopener">Go to Website &rarr;</a>
+        <div class="hb-meta">
+          <div class="hb-row"><span class="hb-label">Tool</span><span class="hb-div"></span>
+            <span class="hb-tools">
+              <img class="tool-ic" src="images/figma_2.png" alt="Figma">
+              <img class="tool-ic" src="images/claude.png" alt="Claude">
+              <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
+            </span>
+          </div>
+          <div class="hb-row"><span class="hb-label">Contribution</span><span class="hb-div"></span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="hb-mock">
+        <div class="hb-laptop">
+          <img class="frame" src="images/mock-up.png" alt="">
+          <div class="hb-screen"><img src="images/Judy_mockup_img.png" alt=""></div>
+        </div>
+        <img class="hb-phone" src="images/project04_iphone.png" alt="">
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section class="dsys dsys-judy">
+    <div class="dsys-inner">
+      <h2 class="dsys-title">Design System</h2>
+      <div class="dsys-grid">
+        <div class="ds-card ds-typo">
+          <p class="ds-h"><span class="n">01</span>Typography</p>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">A2Z</div><div class="d">폰트 설명을 입력하세요.<br>가독성 높은 브랜드 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">샘플 텍스트</span><span class="en" style="font-weight:600">SemiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:500">샘플 텍스트</span><span class="en" style="font-weight:500">Medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">샘플 텍스트</span><span class="en" style="font-weight:400">Regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">샘플 텍스트</span><span class="en" style="font-weight:300">Light</span></div>
+        </div>
+        <div class="ds-card ds-color">
+          <p class="ds-h"><span class="n">02</span>Color</p>
+          <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#FDF3F8"></div><div class="hex">#FDF3F8</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#FF60A2"></div><div class="hex">#FF60A2</div></div>
+          </div></div>
+          <div class="ds-group"><div class="ds-glabel">Sub colors</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#FCE7F1"></div><div class="hex">#FCE7F1</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#FF60A2"></div><div class="hex">#FF60A2</div></div>
+          </div></div>
+          <div class="ds-group ds-gray"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#969696"></div><div class="hex">#969696</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#434343"></div><div class="hex">#434343</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+          </div></div>
+        </div>
+        <div class="ds-card ds-ui">
+          <p class="ds-h"><span class="n">03</span>UI Elements</p>
+          <div class="ds-uirow judy-uirow">
+            <div class="jui-arrows">
+              <button class="jui-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+              <button class="jui-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <button class="jui-btn jui-primary">주요버튼</button>
+            <button class="jui-btn jui-secondary">보조버튼</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <script>
-    // 새로고침하면 항상 맨 위에서 시작
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
-    window.addEventListener('load', () => window.scrollTo(0, 0));
+    // 새로고침해도 현재 위치 유지 (브라우저 기본 복원 사용)
+    if ('scrollRestoration' in history) history.scrollRestoration = 'auto';
 
-    // 스크롤하면 Portfolio 글씨가 왼쪽에서 나타나 오른쪽으로 이동
-    const wrap    = document.querySelector('.hero-wrap');
-    const heroImg = document.getElementById('heroImg');
+    // 표지: 스크롤을 조금만 내려도 스크롤 안내가 사라짐
+    const scrollInd = document.getElementById('scrollInd');
     const clamp   = (v, a, b) => Math.min(b, Math.max(a, v));
 
     function heroRender() {
       const vh = window.innerHeight;
       const y  = window.scrollY;
-      const slideEnd = wrap.offsetHeight - vh;   // 고정이 풀리는 지점
-
-      // 1단계: 고정된 채 왼쪽 밖 → 제자리로 이동
-      const slide = clamp(y / slideEnd, 0, 1);
-      heroImg.style.transform = `translateX(${-100 + slide * 100}vw)`;
-
-      // 2단계: 고정이 풀린 뒤 위로 스크롤되며 내려갈수록 사라짐
-      const fade = clamp((y - slideEnd) / (vh * 0.9), 0, 1);
-      heroImg.style.opacity = String(1 - fade);
+      if (scrollInd) scrollInd.style.opacity = String(clamp(1 - y / (vh * 0.25), 0, 1));
     }
 
     window.addEventListener('scroll', () => requestAnimationFrame(heroRender), { passive: true });
     window.addEventListener('resize', heroRender);
     heroRender();
 
-    // 목차: 아래로 더 스크롤하면 항목이 01→07 순서대로 위로 올라가며 사라짐
-    const indexWrap = document.querySelector('.index-wrap');
-    const projs = document.querySelectorAll('.index .proj');
-    function indexRender() {
-      const total = indexWrap.offsetHeight - window.innerHeight;
-      const p = clamp((window.scrollY - indexWrap.offsetTop) / total, 0, 1);
-      projs.forEach((el, i) => {
-        const start = 0.25 + i * 0.06;
-        const dur = 0.4;
-        const lp = clamp((p - start) / dur, 0, 1);
-        el.style.transform = `translateY(${-lp * 90}px)`;
-        el.style.opacity = String(1 - lp);
-      });
+    // 목차: 스크롤로 진입하면 항목들이 아래에서 순서대로 스르륵 등장
+    const indexSec = document.querySelector('.index');
+    if (indexSec) {
+      const ioIndex = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { indexSec.classList.add('reveal'); ioIndex.disconnect(); } });
+      }, { threshold: 0.15 });
+      ioIndex.observe(indexSec);
     }
-    window.addEventListener('scroll', () => requestAnimationFrame(indexRender), { passive: true });
-    window.addEventListener('resize', indexRender);
-    indexRender();
 
     // 이력서 섹션이 보이면 순서대로 등장
     const resume = document.querySelector('.resume');
@@ -477,6 +1746,39 @@
       });
     }, { threshold: 0.15 });
     io.observe(resume);
+
+    // 프로젝트 상세(Honeybrown / MAC 등): 섹션이 고정된 채 노트북 화면 이미지가
+    // 위→아래 끝까지 스크롤되고, 다 내려가면 고정이 풀리며 다음 섹션으로 넘어감
+    document.querySelectorAll('.hb-wrap').forEach((wrap) => {
+      const fade = wrap.querySelector('.hb-fade');
+      const screen = wrap.querySelector('.hb-screen');
+      const screenImg = screen ? screen.querySelector('img') : null;
+
+      function render() {
+        const vh = window.innerHeight;
+        const wrapTop = wrap.offsetTop;
+        const pinDist = wrap.offsetHeight - vh;
+
+        // 진입 그라데이션
+        const enter = clamp((window.scrollY - (wrapTop - vh)) / vh, 0, 1);
+        if (fade) fade.style.opacity = String(1 - enter);
+
+        // 고정 구간 진행도 0 → 1
+        const p = clamp((window.scrollY - wrapTop) / pinDist, 0, 1);
+
+        // 화면 이미지: 처음(헤더)을 잠깐 보여준 뒤 중간 구간에서 끝까지 스크롤
+        const t = clamp((p - 0.12) / 0.82, 0, 1);
+        if (screenImg) {
+          const max = screenImg.offsetHeight - screen.clientHeight;
+          if (max > 0) screenImg.style.transform = `translateY(${-t * max}px)`;
+        }
+      }
+      window.addEventListener('scroll', () => requestAnimationFrame(render), { passive: true });
+      window.addEventListener('resize', render);
+      if (screenImg && screenImg.complete) render();
+      else if (screenImg) screenImg.addEventListener('load', render);
+      else render();
+    });
   </script>
 </body>
 </html>
