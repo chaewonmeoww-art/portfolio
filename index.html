@@ -257,6 +257,9 @@
     content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
     background:linear-gradient(90deg, rgba(0,0,0,.60) 0%, rgba(0,0,0,.42) 32%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 72%);
   }
+  .hb.buja::before {
+    background:linear-gradient(90deg, rgba(0,0,0,.74) 0%, rgba(0,0,0,.56) 32%, rgba(0,0,0,.24) 55%, rgba(0,0,0,0) 74%);
+  }
 
   .hb-text {
     position:absolute; top:50%; left:clamp(48px,6vw,110px);
@@ -363,50 +366,65 @@
   /* Tracksy 상세: 목업 없어 일반 스크롤(고정 구간 제거) */
   .hb-solo { height:100vh; }
 
-  /* Tracksy: 배경 #F0EEFD · 글씨 #723BE4 */
-  .proc-tracksy { background:#F0EEFD; }
+  /* Tracksy: 배경 #F7F5FE · 글씨 #723BE4 */
+  .proc-tracksy { background:#F7F5FE; }
   .proc-tracksy .process-title,
   .proc-tracksy .process-over,
   .proc-tracksy .pitem h3,
   .proc-tracksy .pitem p,
   .proc-tracksy .pnum { color:#723BE4; }
-  .proc-tracksy .pcard-label { background:#723BE4; color:#F0EEFD; }
+  .proc-tracksy .pcard-label { background:#723BE4; color:#F7F5FE; }
   .proc-tracksy .process-arrow { background:#723BE4; color:#ffffff; }
   /* Tracksy 프로젝트 개요 */
   .proc-tracksy .process-inner { max-width:1500px; }
-  .tov-top { display:flex; gap:clamp(30px,4vw,80px); align-items:flex-start; margin-bottom:clamp(34px,3.5vw,60px); }
+  .tov-top { display:flex; gap:clamp(30px,4vw,80px); align-items:flex-start; margin-bottom:clamp(56px,6vw,104px); }
   .tov-lead { flex:1; min-width:0; }
   .tov-title { font-size:clamp(30px,3vw,48px); font-weight:700; color:#2b2540; line-height:1.25; margin:12px 0 0; }
   .tov-title b { color:#723BE4; font-weight:800; }
   .tov-line { display:block; width:56px; height:2px; background:#723BE4; margin:clamp(22px,2vw,30px) 0; }
   .tov-desc { font-size:clamp(15px,1.1vw,18px); line-height:1.9; color:#5a4d7d; margin-bottom:clamp(30px,3vw,48px); }
-  .tov-bg-head { display:flex; align-items:center; gap:11px; margin-bottom:14px; }
-  .tov-bg-title { font-size:16px; font-weight:700; color:#723BE4; }
-  .tov-bg ul { list-style:none; display:flex; flex-direction:column; gap:11px; padding-left:2px; }
-  .tov-bg li { position:relative; padding-left:15px; font-size:14px; line-height:1.55; color:#5a4d7d; }
-  .tov-bg li::before { content:''; position:absolute; left:0; top:8px; width:4px; height:4px; border-radius:50%; background:#a98ce8; }
-  .tov-bg .tov-ic { width:38px; height:38px; }
-  .tov-ic { flex:0 0 auto; width:clamp(42px,3.2vw,50px); height:clamp(42px,3.2vw,50px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
+  .tov-bg { display:flex; align-items:flex-start; gap:clamp(28px,2.8vw,52px); }
+  .tov-bg-head { flex:0 0 auto; display:flex; align-items:center; gap:13px; }
+  .tov-bg-title { font-size:clamp(19px,1.5vw,23px); font-weight:700; color:#723BE4; }
+  .tov-bg ul { list-style:none; display:flex; flex-direction:column; gap:16px; border-left:2px solid #CBBDF0; padding-left:clamp(28px,2.8vw,52px); }
+  .tov-bg li { position:relative; padding-left:18px; font-size:clamp(15px,1.15vw,17px); line-height:1.7; color:#5f5680; font-weight:500; }
+  .tov-bg li b { font-weight:800; color:#241d3d; }
+  .tov-bg li::before { content:''; position:absolute; left:0; top:11px; width:5px; height:5px; border-radius:50%; background:#a98ce8; }
+  .tov-bg .tov-ic { width:46px; height:46px; }
+  .tov-ic { flex:0 0 auto; width:clamp(50px,3.8vw,60px); height:clamp(50px,3.8vw,60px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
   .tov-ic svg { width:52%; height:52%; }
+  .tov-ic img { width:56%; height:56%; object-fit:contain; }
 
-  .tov-char { flex:0 0 clamp(320px,32vw,500px); position:relative; align-self:center; min-height:360px; display:flex; align-items:center; justify-content:center; }
-  .tov-blob { position:absolute; width:74%; aspect-ratio:1; border-radius:50%; background:#E7E0FB; right:6%; top:50%; transform:translateY(-50%); }
-  .tov-char img { position:relative; z-index:2; width:62%; height:auto; display:block; }
-  .tov-bubble { position:absolute; z-index:3; left:0; top:30%; background:#ffffff; border-radius:16px; padding:15px 22px; font-size:clamp(13px,1vw,16px); font-weight:600; color:#3a3357; line-height:1.5; box-shadow:0 12px 30px rgba(114,59,228,.14); }
+  .tov-char { flex:0 0 clamp(390px,39vw,640px); position:relative; align-self:center; min-height:520px; display:flex; align-items:center; justify-content:center; }
+  .tov-blob { position:absolute; z-index:0; width:88%; aspect-ratio:1; border-radius:50%; background:#E7E0FB; right:3%; top:50%; transform:translateY(-50%); }
+  .tov-char img { position:relative; z-index:2; width:66%; height:auto; display:block; }
+  .tov-dot { position:absolute; z-index:1; border-radius:50%; }
+  .tov-dot.d1 { top:9%;  left:15%;  width:26px; height:26px; background:#C9B8F2; }
+  .tov-dot.d2 { top:5%;  right:20%; width:32px; height:32px; background:#D8C9F5; }
+  .tov-dot.d3 { top:17%; right:7%;  width:15px; height:15px; background:#C9B8F2; }
+  .tov-dot.d4 { top:45%; right:1%;  width:27px; height:27px; background:#BFE3F2; }
+  .tov-dot.d5 { bottom:15%; left:9%; width:30px; height:30px; background:#D8C9F5; }
+  .tov-dot.d6 { bottom:7%; right:15%; width:18px; height:18px; background:#C9B8F2; }
+  .tov-dot.d7 { bottom:22%; right:26%; width:13px; height:13px; background:#BFE3F2; }
+  .tov-bubble { position:absolute; z-index:3; left:2%; top:5%; background:#ffffff; border-radius:18px; padding:24px 30px 26px; font-size:clamp(14px,1.05vw,17px); font-weight:600; color:#3a3357; line-height:1.6; box-shadow:0 14px 34px rgba(114,59,228,.16); }
+  .tov-tail { position:absolute; right:42px; bottom:-7px; width:20px; height:20px; background:#ffffff; border-radius:3px; transform:rotate(45deg); }
+  .tov-bubble::before { content:'\201C'; position:absolute; left:14px; top:12px; font-size:32px; font-weight:800; color:#b09ae8; line-height:1; }
+  .tov-bubble::after { content:'\201D'; position:absolute; right:16px; bottom:4px; font-size:32px; font-weight:800; color:#b09ae8; line-height:1; }
 
-  .tov-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,1.8vw,28px); align-items:start; }
+  .tov-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,1.8vw,28px); align-items:stretch; }
   .tov-card { background:#ffffff; border-radius:20px; padding:clamp(26px,2.4vw,40px); box-shadow:0 18px 46px rgba(114,59,228,.06); }
-  .tov-card-head { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:clamp(22px,2.2vw,32px); }
+  .tov-card-head { display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-bottom:clamp(22px,2.2vw,32px); }
   .tov-card-head h3 { font-size:clamp(19px,1.5vw,24px); font-weight:800; color:#723BE4; }
+  .tov-ul { display:block; width:34px; height:2px; border-radius:2px; background:#723BE4; margin-top:18px; }
   .tov-card ul { list-style:none; display:flex; flex-direction:column; gap:14px; }
-  .tov-card li { position:relative; padding-left:17px; font-size:clamp(14px,1.05vw,16px); line-height:1.6; color:#5a4d7d; }
+  .tov-card li { position:relative; padding-left:17px; font-size:clamp(14px,1.05vw,16px); line-height:1.6; color:#332b4d; font-weight:500; }
   .tov-card li::before { content:''; position:absolute; left:0; top:9px; width:5px; height:5px; border-radius:50%; background:#a98ce8; }
   .tov-feats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-  .tov-feat { display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; font-size:clamp(12px,0.92vw,14px); font-weight:600; color:#5a4d7d; line-height:1.4; }
+  .tov-feat { display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; font-size:clamp(12px,0.92vw,14px); font-weight:700; color:#332b4d; line-height:1.4; }
   .tov-fic { width:clamp(48px,4vw,62px); height:clamp(48px,4vw,62px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
   .tov-fic svg { width:50%; height:50%; }
 
-  .tobe-tracksy { background:#F0EEFD; }
+  .tobe-tracksy { background:#F7F5FE; }
   .tobe-tracksy .tobe-title,
   .tobe-tracksy .tobe-sub,
   .tobe-tracksy .tb-head h3,
@@ -416,7 +434,7 @@
   .tobe-tracksy .tb-item::after { border-color:#723BE4; }
   .tobe-tracksy .tb-item::before { border-top-color:#723BE4; }
 
-  .dsys-tracksy { background:#F0EEFD; }
+  .dsys.dsys-tracksy { background:#F7F5FE; }
   .dsys-tracksy .dsys-title,
   .dsys-tracksy .ds-h .n,
   .dsys-tracksy .ds-aa .aa,
@@ -428,6 +446,209 @@
   .dsys-tracksy .ds-check .on { background:#723BE4; }
   .dsys-tracksy .ds-radio i { border-color:#723BE4; }
   .dsys-tracksy .ds-radio .on::after { background:#723BE4; }
+  .dsys-tracksy .ds-aa .aa,
+  .dsys-tracksy .ds-aa .a2z .t,
+  .dsys-tracksy .ds-aa .a2z .d,
+  .dsys-tracksy .ds-w .kr,
+  .dsys-tracksy .ds-w .en { font-family:'Pretendard', sans-serif; }
+
+  /* Buja tour: 포인트 #04194C · 흰 배경 */
+  .dsys.dsys-buja { background:#ffffff; }
+  .dsys-buja .dsys-title,
+  .dsys-buja .ds-h .n,
+  .dsys-buja .ds-aa .aa,
+  .dsys-buja .ds-aa .a2z .t { color:#04194C; }
+  .dsys-buja .ds-card { border:1px solid #e2e6ee; box-shadow:0 18px 46px rgba(4,25,76,.07); }
+  .dsys-buja .ds-btn-primary,
+  .dsys-buja .ds-btn-ghost,
+  .dsys-buja .ds-btn-navy { border-radius:14px; }
+  .dsys-buja .ds-btn-primary { background:#ED1B24; }
+  .dsys-buja .ds-btn-ghost { background:#ffffff; color:#04194C; border:1.5px solid #04194C; }
+  .dsys-buja .ds-btn-navy { background:#04194C; }
+  .dsys-buja .ds-page .on { background:#04194C; }
+  .dsys-buja .ds-aa .aa,
+  .dsys-buja .ds-aa .a2z .t,
+  .dsys-buja .ds-aa .a2z .d,
+  .dsys-buja .ds-w .kr,
+  .dsys-buja .ds-w .en { font-family:'Pretendard', sans-serif; }
+
+  /* Buja tour 프로젝트 개요 */
+  .buja-ov { background:#ffffff; padding:clamp(40px,6vh,80px) 6vw; }
+  .buja-ov-inner { max-width:1500px; margin:0 auto; }
+  .buja-ov-over { font-size:clamp(12px,1.05vw,15px); font-weight:800; letter-spacing:.25em; color:#E5322A; margin-bottom:14px; }
+  .buja-ov-title { font-size:clamp(26px,2.6vw,42px); font-weight:800; color:#04194C; line-height:1.3; }
+  .buja-ov-title b { color:#E5322A; }
+  .buja-ov-line { display:block; width:56px; height:3px; background:#E5322A; margin:clamp(14px,1.6vw,22px) 0 clamp(20px,2.4vw,36px); }
+  .buja-ov-body { display:grid; grid-template-columns:0.82fr 1.45fr; gap:clamp(20px,2.4vw,40px); align-items:stretch; }
+  .buja-ov-cards { display:flex; flex-direction:column; gap:clamp(14px,1.6vw,22px); }
+  .buja-ov-card { flex:1; background:#ffffff; border:1px solid #e8ecf3; border-radius:16px; box-shadow:0 14px 34px rgba(4,25,76,.06); padding:clamp(18px,1.8vw,26px) clamp(20px,2vw,30px); display:flex; align-items:center; gap:clamp(14px,1.4vw,20px); }
+  .buja-ov-ic { flex:0 0 auto; width:clamp(46px,3.6vw,58px); height:clamp(46px,3.6vw,58px); border-radius:50%; background:#04194C; color:#fff; display:inline-flex; align-items:center; justify-content:center; }
+  .buja-ov-ic svg { width:48%; height:48%; }
+  .buja-ov-card h3 { font-size:clamp(15px,1.2vw,19px); font-weight:800; color:#04194C; margin-bottom:8px; }
+  .buja-ov-card p { font-size:clamp(13px,1.05vw,16px); color:#5b6070; font-weight:500; line-height:1.7; }
+  .buja-ov-main { position:relative; overflow:hidden; background:#F8F9FC; border-radius:24px; padding:clamp(30px,3vw,48px); }
+  .buja-ov-quote { display:flex; align-items:flex-start; justify-content:center; gap:clamp(10px,1.2vw,18px); position:relative; z-index:2; }
+  .buja-ov-quote .q { flex:0 0 auto; color:#E5322A; font-weight:800; font-size:clamp(28px,2.8vw,44px); line-height:1; }
+  .buja-ov-headline { font-size:clamp(19px,1.85vw,30px); font-weight:800; color:#04194C; line-height:1.45; text-align:center; }
+  .buja-ov-headline b { color:#E5322A; }
+  .buja-ov-line2 { display:block; width:44px; height:3px; background:#E5322A; margin:clamp(22px,2.4vw,34px) 0 clamp(18px,2vw,26px); position:relative; z-index:2; }
+  .buja-ov-desc { position:relative; z-index:2; font-size:clamp(13px,1.05vw,16px); color:#5b6070; font-weight:500; line-height:1.9; }
+  .buja-ov-bus { position:absolute; right:0; bottom:0; width:64%; height:auto; opacity:.9; pointer-events:none; -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 42%); mask-image:linear-gradient(to right, transparent 0%, #000 42%); }
+  .buja-ov-bubble { position:absolute; z-index:3; right:clamp(22px,3vw,48px); bottom:clamp(22px,3vw,44px); background:#12203C; color:#fff; border-radius:14px; padding:15px 22px; font-size:clamp(13px,1.05vw,16px); font-weight:600; line-height:1.6; box-shadow:0 14px 30px rgba(4,25,76,.25); }
+  .buja-ov-bubble b { color:#FF6A5E; }
+
+  /* Buja tour 문제점 분석 */
+  .buja-prob { background:#ffffff; padding:200px 6vw clamp(40px,6vh,80px); }
+  .buja-prob-inner { max-width:1500px; margin:0 auto; position:relative; }
+  .buja-prob-over { font-size:clamp(12px,1.05vw,15px); font-weight:800; letter-spacing:.22em; color:#E5322A; margin-bottom:14px; }
+  .buja-prob-over .num { color:#E5322A; margin-right:10px; }
+  .buja-prob-title { font-size:clamp(24px,2.5vw,40px); font-weight:800; color:#04194C; line-height:1.35; }
+  .buja-prob-title b { color:#E5322A; }
+  .buja-prob-line { display:block; width:56px; height:3px; background:#E5322A; margin:clamp(14px,1.6vw,22px) 0 clamp(16px,1.8vw,26px); }
+  .buja-prob-sub { font-size:clamp(13px,1.05vw,16px); color:#5b6070; font-weight:500; line-height:1.8; margin-bottom:clamp(72px,8vw,130px); }
+  .buja-prob-bus { position:absolute; top:-150px; right:0; height:clamp(300px,30vw,450px); width:auto; opacity:.85; pointer-events:none; -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 42%); mask-image:linear-gradient(to right, transparent 0%, #000 42%); }
+  .buja-prob-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,1.6vw,26px); }
+  .buja-prob-card { background:#fff; border:1px solid #e8ecf3; border-radius:18px; box-shadow:0 14px 34px rgba(4,25,76,.06); padding:clamp(22px,2vw,32px) clamp(20px,1.8vw,28px); display:flex; align-items:flex-start; gap:clamp(12px,1.2vw,18px); }
+  .buja-prob-ic { flex:0 0 auto; width:clamp(42px,3.2vw,52px); height:clamp(42px,3.2vw,52px); border-radius:50%; background:#04194C; color:#fff; display:inline-flex; align-items:center; justify-content:center; }
+  .buja-prob-ic svg { width:48%; height:48%; }
+  .buja-prob-ct h3 { font-size:clamp(15px,1.2vw,19px); font-weight:800; color:#04194C; margin-bottom:15px; padding-top:6px; }
+  .buja-prob-ct ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .buja-prob-ct li { position:relative; padding-left:13px; font-size:clamp(13px,1.02vw,15px); color:#5b6070; font-weight:500; line-height:1.5; }
+  .buja-prob-ct li::before { content:'-'; position:absolute; left:0; color:#9098a8; }
+
+  /* Buja tour 경쟁사 분석 + 팀 프로젝트 과정 */
+  .buja-sec-over { font-size:clamp(22px,2.2vw,32px); font-weight:800; letter-spacing:.02em; color:#04194C; margin-bottom:clamp(20px,2.2vw,34px); }
+  .buja-sec-over .num { color:#E5322A; margin-right:10px; }
+  .buja-comp { background:#ffffff; padding:clamp(50px,7vh,100px) 6vw clamp(24px,3vh,44px); }
+  .buja-comp-inner { max-width:1500px; margin:0 auto; }
+  .buja-sym { width:clamp(16px,1.3vw,22px); height:auto; vertical-align:middle; }
+  .buja-logo { height:clamp(20px,1.7vw,28px); width:auto; max-width:clamp(110px,11vw,150px); object-fit:contain; vertical-align:middle; }
+  .buja-logo3 { height:auto; width:clamp(100px,10vw,132px); }
+  .buja-legend img { width:15px; height:auto; vertical-align:middle; margin-right:5px; }
+  .buja-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:14px; overflow:hidden; border:1px solid #e2e6ee; box-shadow:0 14px 34px rgba(4,25,76,.05); }
+  .buja-table th, .buja-table td { padding:clamp(12px,1.3vw,18px); text-align:center; font-size:clamp(13px,1.05vw,16px); border-bottom:1px solid #eef0f5; border-right:1px solid #eef0f5; }
+  .buja-table th:last-child, .buja-table td:last-child { border-right:none; }
+  .buja-table thead th { background:#04194C; color:#fff; font-weight:800; }
+  .buja-table tbody td { color:#04194C; font-weight:800; font-size:clamp(15px,1.3vw,20px); }
+  .buja-table td.cat { background:#F7F8FB; color:#04194C; font-weight:700; font-size:clamp(13px,1.05vw,16px); }
+  .buja-table tbody tr:last-child td { border-bottom:none; }
+  .buja-legend { display:flex; justify-content:flex-end; gap:22px; margin-top:16px; font-size:clamp(12px,1vw,14px); color:#5b6070; font-weight:600; }
+  .buja-comp-note { text-align:center; margin-top:clamp(90px,11vh,150px); font-size:clamp(15px,1.3vw,20px); color:#04194C; font-weight:600; line-height:1.75; }
+  .buja-comp-note b { color:#E5322A; font-weight:800; }
+  .buja-proc { background:#ffffff; padding:clamp(60px,8vh,110px) 6vw clamp(50px,7vh,100px); }
+  .buja-proc-inner { max-width:1500px; margin:0 auto; }
+  .buja-steps { display:flex; align-items:stretch; }
+  .buja-step { flex:1; background:#F8F9FC; border:1px solid #e8ecf3; border-radius:16px; padding:clamp(20px,1.8vw,30px) clamp(13px,1.1vw,20px); text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .buja-step-num { font-size:clamp(18px,1.6vw,24px); font-weight:800; color:#04194C; }
+  .buja-step h3 { font-size:clamp(14px,1.15vw,18px); font-weight:800; color:#04194C; margin:6px 0 clamp(16px,1.6vw,22px); }
+  .buja-step-ic { width:clamp(48px,4.2vw,64px); height:clamp(48px,4.2vw,64px); color:#04194C; display:inline-flex; align-items:center; justify-content:center; margin-bottom:clamp(16px,1.6vw,22px); }
+  .buja-step-ic svg { width:100%; height:100%; }
+  .buja-step ul { list-style:none; display:flex; flex-direction:column; gap:8px; text-align:left; width:100%; padding-left:6px; }
+  .buja-step li { position:relative; padding-left:12px; font-size:clamp(12px,0.98vw,14px); color:#5b6070; font-weight:500; line-height:1.5; }
+  .buja-step li::before { content:'-'; position:absolute; left:0; color:#9098a8; }
+  .buja-step-arrow { flex:0 0 auto; align-self:center; display:flex; align-items:center; justify-content:center; width:clamp(20px,1.9vw,28px); height:clamp(20px,1.9vw,28px); border-radius:50%; background:#E5322A; color:#fff; margin:0 clamp(3px,0.5vw,9px); }
+  .buja-step-arrow svg { width:52%; height:52%; }
+
+  /* Tracksy 문제점 분석 (설문 + 문제 카드) */
+  .tky-prob { background:#F7F5FE; padding:clamp(60px,8vh,120px) 6vw clamp(60px,8vh,90px); }
+  .tky-prob-inner { max-width:1500px; margin:0 auto; }
+  .tky-row { display:grid; grid-template-columns:1.05fr 1.25fr; gap:clamp(24px,2.4vw,42px); align-items:stretch; }
+  .tky-survey { background:#fff; border-radius:22px; padding:clamp(26px,2.4vw,40px); box-shadow:0 18px 46px rgba(114,59,228,.07); display:flex; flex-direction:column; justify-content:center; }
+  .tky-survey-head { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:clamp(26px,2.6vw,40px); }
+  .tky-survey-head h3 { font-size:clamp(20px,1.6vw,26px); font-weight:800; color:#2b2540; }
+  .tky-survey-head span { font-size:clamp(12px,0.9vw,14px); color:#9a93b0; font-weight:500; }
+  .tky-chart { display:grid; grid-template-columns:auto 1fr; column-gap:12px; }
+  .tky-yaxis { grid-column:1; grid-row:1; list-style:none; display:flex; flex-direction:column; justify-content:space-between; height:150px; text-align:right; font-size:11px; color:#a9a3bd; }
+  .tky-plot { grid-column:2; grid-row:1; height:150px; display:flex; align-items:flex-end; justify-content:space-between; gap:clamp(10px,1.4vw,22px); border-bottom:1.5px solid #E5DFF3; background:repeating-linear-gradient(to top, transparent 0, transparent calc(20% - 1px), #EEE9F7 calc(20% - 1px), #EEE9F7 20%); }
+  .tky-col { flex:1; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; }
+  .tky-col .bar { width:100%; max-width:46px; background:linear-gradient(to top,#6A2BD9,#C29BF2); border-radius:8px 8px 0 0; }
+  .tky-col .star { color:#B98BF0; font-size:22px; line-height:1; margin-bottom:8px; }
+  .tky-xlabels { grid-column:2; grid-row:2; list-style:none; display:flex; justify-content:space-between; gap:clamp(10px,1.4vw,22px); margin-top:12px; }
+  .tky-xlabels li { flex:1; text-align:center; font-size:clamp(10px,0.8vw,13px); color:#6a6484; font-weight:600; white-space:nowrap; }
+  .tky-note { margin-top:clamp(90px,11vh,160px); text-align:center; }
+  .tky-note-ic { flex:0 0 auto; width:38px; height:38px; border-radius:50%; background:#E4D8F9; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
+  .tky-note-ic svg { width:56%; height:56%; }
+  .tky-note p { font-size:clamp(17px,1.4vw,22px); color:#6a6484; font-weight:500; line-height:1.6; }
+  .tky-note p b { color:#723BE4; font-weight:800; }
+  .tky-probs { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,1.4vw,22px); }
+  .tky-pcard { background:#fff; border-radius:22px; padding:clamp(24px,2.2vw,36px) clamp(16px,1.4vw,22px); box-shadow:0 18px 46px rgba(114,59,228,.07); display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .tky-pcard h4 { font-size:clamp(18px,1.45vw,23px); font-weight:800; color:#723BE4; line-height:1.35; }
+  .tky-picimg { width:clamp(66px,5.6vw,88px); height:auto; object-fit:contain; margin-top:clamp(22px,2.2vw,32px); }
+  .tky-pline { display:block; width:30px; height:2px; background:#723BE4; margin:clamp(16px,1.6vw,22px) 0; }
+  .tky-pcard p { font-size:clamp(13px,1vw,15px); color:#5f5680; font-weight:500; line-height:1.7; }
+
+  /* Tracksy 개선 (Improvement) */
+  .tky-imp { background:#F7F5FE; padding:clamp(40px,6vh,70px) 6vw clamp(90px,11vh,150px); }
+  .tky-imp-inner { max-width:1500px; margin:0 auto; }
+  .tky-imp-top { display:grid; grid-template-columns:0.92fr auto 1.4fr; gap:clamp(14px,1.8vw,30px); align-items:center; margin-bottom:clamp(34px,4.4vh,64px); }
+  .tky-imp-over { font-size:clamp(12px,1vw,14px); font-weight:800; letter-spacing:.18em; color:#a98ce8; margin-bottom:12px; }
+  .tky-imp-title { font-size:clamp(26px,2.4vw,38px); font-weight:800; color:#2b2540; margin-bottom:16px; }
+  .tky-imp-sub { font-size:clamp(13px,1.05vw,16px); line-height:1.7; color:#8a83a3; margin-bottom:clamp(24px,2.6vw,40px); }
+  .tky-imp-quote { position:relative; background:#fff; border-radius:18px; padding:clamp(24px,2.4vw,36px); box-shadow:0 18px 46px rgba(114,59,228,.07); }
+  .tky-imp-quote p { font-size:clamp(15px,1.2vw,19px); line-height:1.8; color:#3a3357; font-weight:600; }
+  .tky-imp-quote b { color:#723BE4; font-weight:800; }
+  .tky-imp-star { position:absolute; color:#B99BF0; line-height:1; }
+  .tky-imp-star.s1 { top:-14px; left:26px; font-size:26px; }
+  .tky-imp-star.s2 { top:-26px; left:54px; font-size:16px; }
+  .tky-imp-arrow { width:clamp(40px,3.4vw,52px); height:clamp(40px,3.4vw,52px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:flex; align-items:center; justify-content:center; }
+  .tky-imp-arrow svg { width:52%; height:52%; }
+  .tky-imp-table { position:relative; }
+  .tky-imp-table table { width:100%; border-collapse:separate; border-spacing:0; border-radius:24px; overflow:hidden; box-shadow:0 18px 46px rgba(114,59,228,.07); background:#fff; border:1.5px solid #EBE1F7; }
+  .tky-imp-table th, .tky-imp-table td { padding:clamp(11px,1.3vw,18px) clamp(8px,0.9vw,16px); text-align:center; font-size:clamp(12px,1vw,15px); border-bottom:1px solid #EDE9F6; border-right:1px solid #EDE9F6; }
+  .tky-imp-table th:last-child, .tky-imp-table td:last-child { border-right:none; }
+  .tky-imp-table thead th { background:#F1ECFB; color:#5a4d7d; font-weight:700; }
+  .tky-imp-table thead th.win { background:linear-gradient(120deg,#7B3FE4,#9A6BF0); color:#fff; font-weight:800; }
+  .winbadge { position:absolute; top:-20px; right:-12px; z-index:2; width:clamp(50px,3.9vw,64px); height:clamp(50px,3.9vw,64px); border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#FF6FD8,#B14BF0); color:#fff; font-size:clamp(13px,1.05vw,16px); font-weight:800; letter-spacing:.03em; border:3px solid #fff; box-shadow:0 10px 24px rgba(200,70,200,.5); }
+  .tky-imp-table td.cat { background:#F7F5FC; color:#4a4467; font-weight:700; }
+  .tky-imp-table td { color:#7a7397; }
+  .tky-imp-table td.hl { color:#723BE4; font-weight:800; line-height:1.5; }
+  .tky-imp-table tbody tr:last-child td { border-bottom:none; }
+  .tky-imp-panel { background:#F0ECFB; border-radius:26px; padding:clamp(30px,3.4vw,54px) clamp(24px,3vw,50px); }
+  .tky-imp-ptitle { text-align:center; font-size:clamp(19px,1.8vw,28px); font-weight:800; color:#2b2540; margin-bottom:clamp(28px,3vw,46px); }
+  .tky-imp-ptitle b { color:#723BE4; }
+  .tky-imp-feats { display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(12px,1.4vw,22px); }
+  .tky-fcard { position:relative; background:#fff; border-radius:18px; padding:clamp(22px,2vw,32px) clamp(12px,1.2vw,18px) clamp(24px,2.2vw,34px); text-align:center; display:flex; flex-direction:column; align-items:center; overflow:hidden; }
+  .tky-fnum { position:absolute; top:10px; left:16px; font-size:clamp(26px,2.4vw,38px); font-weight:800; color:#EBE4FA; letter-spacing:.02em; }
+  .tky-fic { position:relative; z-index:1; width:clamp(48px,4.4vw,64px); height:clamp(48px,4.4vw,64px); color:#723BE4; display:inline-flex; align-items:center; justify-content:center; margin:clamp(16px,1.8vw,26px) 0 clamp(16px,1.6vw,22px); }
+  .tky-fic svg { width:100%; height:100%; }
+  .tky-fic img { width:100%; height:100%; object-fit:contain; }
+  .tky-fcard h4 { font-size:clamp(14px,1.15vw,18px); font-weight:800; color:#723BE4; margin-bottom:12px; }
+  .tky-fcard p { font-size:clamp(12px,0.98vw,14px); line-height:1.65; color:#5f5680; font-weight:500; }
+  .tky-imp-note2 { display:flex; align-items:center; justify-content:center; gap:14px; margin-top:clamp(26px,3vw,44px); background:#E6DEF8; border-radius:16px; padding:16px 24px; }
+  .tky-imp-heart { flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:#fff; color:#9A6BF0; display:inline-flex; align-items:center; justify-content:center; }
+  .tky-imp-heart svg { width:54%; height:54%; }
+  .tky-imp-note2 p { font-size:clamp(14px,1.15vw,18px); color:#5a4d7d; font-weight:500; }
+  .tky-imp-note2 p b { color:#723BE4; font-weight:800; }
+
+  /* Tracksy 주요 기능 (목업 쇼케이스) */
+  .tky-feat { background:#F7F5FE; padding:clamp(50px,8vh,110px) 6vw; }
+  .tky-feat-inner { max-width:1500px; margin:0 auto; display:grid; grid-template-columns:0.68fr 1.75fr; gap:clamp(16px,2vw,36px); align-items:center; }
+  .tky-feat-lead { padding-left:clamp(16px,4vw,80px); transform:translateY(-50px); }
+  .tky-feat-lead .tky-feat-title, .tky-feat-lead .tky-feat-sub { white-space:nowrap; }
+  .tky-feat-num { display:block; font-size:clamp(42px,4.8vw,72px); font-weight:800; color:#723BE4; line-height:1; }
+  .tky-feat-line { display:block; width:60px; height:3px; background:#723BE4; margin:clamp(16px,2vw,26px) 0; }
+  .tky-feat-title { font-size:clamp(30px,3vw,48px); font-weight:800; color:#723BE4; margin-bottom:14px; }
+  .tky-feat-sub { font-size:clamp(17px,1.5vw,24px); color:#3a3357; font-weight:600; }
+  .tky-feat-card { margin-top:clamp(28px,3vw,42px); width:calc(100% + clamp(16px,4vw,80px)); background:#fff; border-radius:20px; padding:clamp(22px,2vw,32px); box-shadow:0 18px 46px rgba(114,59,228,.08); white-space:normal; }
+  .tky-feat-card-head { display:flex; align-items:center; gap:16px; margin-bottom:clamp(15px,1.5vw,21px); }
+  .tky-feat-card-ic { flex:0 0 auto; width:clamp(46px,3.4vw,58px); height:clamp(46px,3.4vw,58px); border-radius:50%; background:#EDE8FB; color:#723BE4; display:inline-flex; align-items:center; justify-content:center; }
+  .tky-feat-card-ic svg { width:52%; height:52%; }
+  .tky-feat-card-tt h3 { font-size:clamp(17px,1.4vw,23px); font-weight:800; color:#2b2540; margin-bottom:7px; }
+  .tky-feat-card-tt p { font-size:clamp(12px,1vw,15px); color:#5a4d7d; font-weight:500; line-height:1.5; }
+  .tky-feat-card-body { border-top:1.5px solid #E7DEF7; padding-top:clamp(15px,1.5vw,21px); }
+  .tky-feat-card-body p { font-size:clamp(13px,1.05vw,16px); color:#3a3357; font-weight:600; line-height:1.7; }
+  .tky-feat-card-body p.hl { color:#723BE4; font-weight:800; }
+  .tky-feat-mini { margin-top:clamp(28px,3vw,42px); width:calc(100% + clamp(16px,4vw,80px)); display:flex; flex-direction:column; gap:clamp(14px,1.4vw,20px); }
+  .tky-feat-card-mini { margin-top:0; width:100%; padding:clamp(18px,1.6vw,26px) clamp(22px,2vw,30px); }
+  .tky-feat-card-mini .tky-feat-card-head { margin-bottom:0; }
+  .tky-feat-02 .tky-feat-visual::before { background-image:url('images/Tracksy_iphone02_bg.png'); filter:none; }
+  .tky-feat-03 .tky-feat-visual::before { background-image:url('images/Tracksy_iphone03_bg.png'); filter:none; }
+  .tky-feat-visual { position:relative; aspect-ratio:1920/1080; transform:translateX(clamp(30px,5vw,90px)); }
+  .tky-feat-visual::before { content:''; position:absolute; inset:0; background:url('images/Tracksy_iphone01_bg.png') center/contain no-repeat; filter:brightness(1.035) saturate(.9); }
+  .tky-feat-phones { position:absolute; z-index:1; left:53%; top:53%; transform:translate(-50%,-50%); width:56%; height:auto; filter:drop-shadow(0 22px 38px rgba(114,59,228,.26)); animation:tkyFloat 4s ease-in-out infinite; }
+  .tky-feat-02 .tky-feat-phones { animation-delay:-1.3s; }
+  .tky-feat-03 .tky-feat-phones { animation-delay:-2.6s; }
+  @keyframes tkyFloat { 0% { transform:translate(-50%,calc(-50% - 12px)); } 50% { transform:translate(-50%,calc(-50% + 12px)); } 100% { transform:translate(-50%,calc(-50% - 12px)); } }
 
   /* Judy game: 배경 #FDF3F8 · 글씨 #FF60A2 */
   .proc-judy { background:#FDF3F8; }
@@ -664,6 +885,8 @@
   .ds-uirow { display:flex; align-items:center; gap:clamp(22px,3vw,56px); flex-wrap:wrap; }
   .ds-btn-primary { background:#633418; color:#fff; border:0; border-radius:8px; padding:13px 24px; font-size:clamp(14px,1vw,16px); font-weight:500; font-family:inherit; cursor:pointer; }
   .ds-btn-ghost { background:#fff; color:#633418; border:1px solid #633418; border-radius:8px; padding:13px 24px; font-size:clamp(14px,1vw,16px); font-weight:500; font-family:inherit; cursor:pointer; }
+  .ds-btn-navy { background:#04194C; color:#fff; border:0; border-radius:8px; padding:13px 24px; font-size:clamp(14px,1vw,16px); font-weight:500; font-family:inherit; cursor:pointer; }
+  .ds-btn-sm { padding:9px 18px; font-size:14px; box-shadow:0 8px 18px rgba(0,0,0,.18); }
   .ds-page { display:flex; gap:8px; }
   .ds-page span { width:34px; height:34px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:14px; }
   .ds-page .on { background:#633418; color:#fff; }
@@ -875,7 +1098,7 @@
         <span class="hb-line"></span>
         <p class="hb-sub">웹사이트 리디자인 팀프로젝트</p>
         <p class="hb-desc">기록을 넘어 감정까지 담을 수 있는 러닝 기록 서비스를 기획한 <br> 프로젝트입니다. 러닝 데이터를 감성적인 카드로 편집하고 SNS에 <br> 쉽게 공유할 수 있도록 사용자 중심의 기록 경험을 설계하였습니다.</p>
-        <a class="hb-link" href="#" target="_blank" rel="noopener">Go to Website &rarr;</a>
+        <a class="hb-link" href="https://app-portfolio-tracksy.vercel.app/home" target="_blank" rel="noopener">Go to Website &rarr;</a>
         <div class="hb-meta">
           <div class="hb-row">
             <span class="hb-label">Tool</span>
@@ -904,28 +1127,35 @@
           <p class="process-over">PROJECT OVERVIEW</p>
           <h2 class="tov-title"><b>기록</b>을 넘어 <b>감정</b>을 <b>공유</b>하는<br>새로운 러닝 경험</h2>
           <span class="tov-line"></span>
-          <p class="tov-desc">Tracksy는 러닝 기록을 감성적인 카드 형태로 편집하고<br>SNS에 쉽게 공유할 수 있도록 기획한 러닝 다이어리 앱입니다.<br>단순한 운동 기록을 넘어 사용자의 감정과 개성을 함께 담아낼 수 있는<br>새로운 러닝 경험을 제공합니다.</p>
+          <p class="tov-desc">Tracksy는 러닝 기록을 감성적인 카드로 편집하고<br>SNS에 쉽게 공유할 수 있도록 기획한 러닝 다이어리 앱입니다.<br>운동 기록과 감정을 함께 담아 나만의 러닝 경험을 제공합니다.</p>
           <div class="tov-bg">
             <div class="tov-bg-head">
               <span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.5.4.8 1 .8 1.7V16h6v-.7c0-.7.3-1.3.8-1.7A6 6 0 0 0 12 3z"/></svg></span>
               <span class="tov-bg-title">Background</span>
             </div>
             <ul>
-              <li>기존 러닝 앱은 수치 중심의 기록에 집중되어<br>사용자의 감정과 개성을 표현하기 어렵습니다.</li>
-              <li>2025년 러닝 인구 1,000만 시대,<br>기록을 시각적으로 편집하고 공유하려는 니즈가<br>더욱 증가하고 있습니다.</li>
+              <li>기존 러닝 앱은 수치 중심의 기록에 집중되어<br>사용자의 <b>감정과 개성</b>을 <b>표현</b>하기 어렵습니다.</li>
+              <li>2025년 러닝 인구 1,000만 시대,<br>기록을 시각적으로 편집하고 공유하려는<br><b>니즈가 더욱 증가</b>하고 있습니다.</li>
             </ul>
           </div>
         </div>
         <div class="tov-char">
           <span class="tov-blob"></span>
-          <div class="tov-bubble">오늘 러닝도<br>예쁘게 기록하고 싶어!</div>
+          <span class="tov-dot d1"></span>
+          <span class="tov-dot d2"></span>
+          <span class="tov-dot d3"></span>
+          <span class="tov-dot d4"></span>
+          <span class="tov-dot d5"></span>
+          <span class="tov-dot d6"></span>
+          <span class="tov-dot d7"></span>
+          <div class="tov-bubble">오늘 러닝도<br>예쁘게 기록하고 싶어!<span class="tov-tail"></span></div>
           <img src="images/Tracksy_01.png" alt="Tracksy 캐릭터">
         </div>
       </div>
 
       <div class="tov-cards">
         <div class="tov-card">
-          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="5" r="2"/><path d="M9.5 8l3.5-1.5 2.5 3 2.5 1.5M13 9.5l-1.5 4 3 2.5.5 3M11.5 13.5L8 15l-2.5-1"/></svg></span><h3>Target</h3></div>
+          <div class="tov-card-head"><span class="tov-ic"><img src="images/Tracksy_running.png" alt=""></span><div class="tov-tt"><h3>Target</h3><span class="tov-ul"></span></div></div>
           <ul>
             <li>20-30대 러닝 입문자</li>
             <li>러닝 기록을 SNS에 공유하는 사용자</li>
@@ -934,7 +1164,7 @@
           </ul>
         </div>
         <div class="tov-card">
-          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9-8.8C1.6 7.7 4 5 7 5c2 0 3.2 1.1 5 3 1.8-1.9 3-3 5-3 3 0 5.4 2.7 4 6.2-2 4.4-9 8.8-9 8.8z"/></svg></span><h3>Needs</h3></div>
+          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9-8.8C1.6 7.7 4 5 7 5c2 0 3.2 1.1 5 3 1.8-1.9 3-3 5-3 3 0 5.4 2.7 4 6.2-2 4.4-9 8.8-9 8.8z"/></svg></span><div class="tov-tt"><h3>Needs</h3><span class="tov-ul"></span></div></div>
           <ul>
             <li>나만의 스타일로 러닝 기록을 남기고 싶어요</li>
             <li>감성적인 러닝 카드를 만들고 싶어요</li>
@@ -943,7 +1173,7 @@
           </ul>
         </div>
         <div class="tov-card">
-          <div class="tov-card-head"><span class="tov-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.8-4.3 4.1 1 5.8L12 22l-5.2-2.7 1-5.8-4.3-4.1 5.9-.8z"/></svg></span><h3>Core Features</h3></div>
+          <div class="tov-card-head"><span class="tov-ic"><img src="images/Tracksy_star.png" alt=""></span><div class="tov-tt"><h3>Core Features</h3><span class="tov-ul"></span></div></div>
           <div class="tov-feats">
             <div class="tov-feat"><span class="tov-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2.5"/><path d="M12 4v4M2 13v2M22 13v2"/><circle cx="12" cy="4" r="1"/><path d="M9.5 13h.01M14.5 13h.01M9.5 16h5"/></svg></span><span>AI<br>러닝일지</span></div>
             <div class="tov-feat"><span class="tov-fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h4M7 14h7M15 10h2"/></svg></span><span>러닝<br>카드 디자인</span></div>
@@ -955,19 +1185,190 @@
     </div>
   </section>
 
-  <section class="tobe tobe-tracksy">
-    <div class="tobe-inner">
-      <h2 class="tobe-title">To-Be Design</h2>
-      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
-      <div class="tobe-body">
-        <div class="tobe-shot"><img src="images/honeybrown_mockup_img.png" alt="리디자인 전체 페이지"></div>
-        <div class="tobe-list">
-          <div class="tb-item" style="--top:11%"><div class="tb-head"><span class="tb-num">01</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:29%"><div class="tb-head"><span class="tb-num">02</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:47%"><div class="tb-head"><span class="tb-num">03</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:65%"><div class="tb-head"><span class="tb-num">04</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:83%"><div class="tb-head"><span class="tb-num">05</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+  <section class="tky-prob">
+    <div class="tky-prob-inner">
+      <div class="tky-survey-head">
+        <h3>기존 러닝 앱 불편사항 조사</h3>
+        <span>2026.04.21 러닝 기록 및 사진 공유앱 사용자 조사</span>
+      </div>
+      <div class="tky-row">
+      <div class="tky-survey">
+        <div class="tky-chart">
+          <ul class="tky-yaxis">
+            <li>50.00%</li><li>40.00%</li><li>30.00%</li><li>20.00%</li><li>10.00%</li><li>0.00%</li>
+          </ul>
+          <div class="tky-plot">
+            <div class="tky-col"><span class="bar" style="height:36%"></span></div>
+            <div class="tky-col"><span class="bar" style="height:22%"></span></div>
+            <div class="tky-col"><b class="star">★</b><span class="bar" style="height:60%"></span></div>
+            <div class="tky-col"><span class="bar" style="height:10%"></span></div>
+            <div class="tky-col"><b class="star">★</b><span class="bar" style="height:84%"></span></div>
+            <div class="tky-col"><b class="star">★</b><span class="bar" style="height:60%"></span></div>
+          </div>
+          <ul class="tky-xlabels">
+            <li>GPS 정확도</li><li>사용하기 어려움</li><li>기록 관리 어려움</li><li>공유 기능 부족</li><li>재미 요소 부족</li><li>디자인 요소 부족</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="tky-probs">
+        <div class="tky-pcard">
+          <h4>기록 중심의<br>딱딱한 UI</h4>
+          <img class="tky-picimg" src="images/Tracksy_icon01.png" alt="">
+          <span class="tky-pline"></span>
+          <p>기존 앱들(Strava,<br>나이키런등)은 수치<br>(Km, pace) 전달에만 치중</p>
+        </div>
+        <div class="tky-pcard">
+          <h4>공유 최적화<br>부재</h4>
+          <img class="tky-picimg" src="images/Tracksy_icon02.png" alt="">
+          <span class="tky-pline"></span>
+          <p>SNS에 업로드하기에는<br>디자인이 투박, 배경<br>커스텀이 제한적임</p>
+        </div>
+        <div class="tky-pcard">
+          <h4>감성 표현의<br>갈등</h4>
+          <img class="tky-picimg" src="images/Tracksy_icon03.png" alt="">
+          <span class="tky-pline"></span>
+          <p>단순 데이터 나열로는<br>'오늘의 러닝 기분'이나<br>개인의 브랜딩을 표현하기 어려움</p>
+        </div>
+      </div>
+      </div>
+
+      <div class="tky-note">
+        <p>&ldquo;사용자들은 <b>기록 관리의 어려움</b>, <b>재미 요소 부족</b>, <b>디자인 요소 부족</b>을 가장 큰 불편 요소로 꼽았습니다.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tky-imp">
+    <div class="tky-imp-inner">
+      <div class="tky-imp-top">
+        <div class="tky-imp-lead">
+          <p class="tky-imp-over">IMPROVEMENT</p>
+          <h2 class="tky-imp-title">이렇게 개선했어요</h2>
+          <p class="tky-imp-sub">사용자의 불편을 해결하고, 감정을 담은 러닝 경험을 제공하도록<br>Tracksy를 개선했습니다.</p>
+          <div class="tky-imp-quote">
+            <span class="tky-imp-star s1">✦</span>
+            <span class="tky-imp-star s2">✦</span>
+            <p><b>TRACKSY</b>는 기록 관리에서 더 나아가,<br><b>러닝 경험 전체를 콘텐츠화</b> 하여<br>새로운 가치를 제공합니다.</p>
+          </div>
+        </div>
+        <div class="tky-imp-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="tky-imp-table">
+          <span class="winbadge">WIN</span>
+          <table>
+            <thead>
+              <tr><th>구분</th><th>기존 러닝 앱 (Strava, NRC 등)</th><th class="win">TRACKSY</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="cat">서비스</td><td>기록 관리 중심</td><td class="hl">콘텐츠 경험 중심</td></tr>
+              <tr><td class="cat">기록 방식</td><td>수치 데이터 위주</td><td class="hl">감성 표현 가능</td></tr>
+              <tr><td class="cat">콘텐츠 제작</td><td>편집 기능 제한</td><td class="hl">감성 카드 편집 제공</td></tr>
+              <tr><td class="cat">공유 기능</td><td>공유 기능 제한적</td><td class="hl">SNS 최적화 콘텐츠 제작</td></tr>
+              <tr><td class="cat">보관 및 관리</td><td>단순 저장</td><td class="hl">아카이빙 &amp; 스타일 보관</td></tr>
+              <tr><td class="cat">부가 기능</td><td>없음</td><td class="hl">OCR 자동 입력 / AI 러닝일지<br>커뮤니티 제공</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tky-imp-panel">
+        <h3 class="tky-imp-ptitle">나만의 <b>감성</b>으로 러닝을 기록하고 공유하는 <b>러닝 다이어리</b> 앱</h3>
+        <div class="tky-imp-feats">
+          <div class="tky-fcard"><span class="tky-fnum">01</span><span class="tky-fic"><img src="images/Tracksy_icon04.png" alt=""></span><h4>OCR 자동 입력</h4><p>이미지 기반<br>자동 데이터 추출</p></div>
+          <div class="tky-fcard"><span class="tky-fnum">02</span><span class="tky-fic"><img src="images/Tracksy_icon05.png" alt=""></span><h4>러닝 카드 편집</h4><p>다양한 스타일로<br>나만의 카드 제작</p></div>
+          <div class="tky-fcard"><span class="tky-fnum">03</span><span class="tky-fic"><img src="images/Tracksy_icon06.png" alt=""></span><h4>AI 러닝일지</h4><p>AI가 오늘의 러닝 일지를<br>대화로 통해 자동생성</p></div>
+          <div class="tky-fcard"><span class="tky-fnum">04</span><span class="tky-fic"><img src="images/Tracksy_icon07.png" alt=""></span><h4>SNS 공유</h4><p>SNS 최적화된<br>콘텐츠 제작 및 공유</p></div>
+          <div class="tky-fcard"><span class="tky-fnum">05</span><span class="tky-fic"><img src="images/Tracksy_icon08.png" alt=""></span><h4>커뮤니티 경험</h4><p>러너들과 소통하고<br>경험을 함께 나눔</p></div>
+        </div>
+        <div class="tky-imp-note2">
+          <span class="tky-imp-heart"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.4-9-8.8C1.6 7.7 4 5 7 5c2 0 3.2 1.1 5 3 1.8-1.9 3-3 5-3 3 0 5.4 2.7 4 6.2-2 4.4-9 8.8-9 8.8z"/></svg></span>
+          <p>Tracksy는 러너의 <b>감정을 기록하고, 공유하고, 연결하는 새로운 러닝 경험</b>을 만듭니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tky-feat">
+    <div class="tky-feat-inner">
+      <div class="tky-feat-lead">
+        <span class="tky-feat-line"></span>
+        <h2 class="tky-feat-title">주요 기능</h2>
+        <p class="tky-feat-sub">AI 활용 러닝 기록 ①</p>
+        <div class="tky-feat-card">
+          <div class="tky-feat-card-head">
+            <span class="tky-feat-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5-7 7"/></svg></span>
+            <div class="tky-feat-card-tt">
+              <h3>캡쳐사진 스캔하기</h3>
+              <p>캡쳐된 러닝 기록을 OCR 기능으로 불러와 기록 가능</p>
+            </div>
+          </div>
+          <div class="tky-feat-card-body">
+            <p>나이키런, 가민, 스트라바 등 다른 앱 캡처이미지 업로드 시</p>
+            <p class="hl">⇒AI가 거리·시간·페이스 등 데이터를 읽고 자동 기록</p>
+          </div>
+        </div>
+      </div>
+      <div class="tky-feat-visual">
+        <img class="tky-feat-phones" src="images/Tracksy_iphone01.png" alt="Tracksy 앱 화면">
+      </div>
+    </div>
+  </section>
+
+  <section class="tky-feat tky-feat-02">
+    <div class="tky-feat-inner">
+      <div class="tky-feat-lead">
+        <span class="tky-feat-line"></span>
+        <h2 class="tky-feat-title">주요 기능</h2>
+        <p class="tky-feat-sub">AI 활용 러닝 기록 ②</p>
+        <div class="tky-feat-card">
+          <div class="tky-feat-card-head">
+            <span class="tky-feat-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a7.5 7.5 0 0 1-10.8 6.7L4 19.5l1.3-4.2A7.5 7.5 0 1 1 20 11.5z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg></span>
+            <div class="tky-feat-card-tt">
+              <h3>AI 오늘의 러닝일지</h3>
+              <p>AI 챗봇과 대화를 통해 러닝 한줄 요약 가능</p>
+            </div>
+          </div>
+          <div class="tky-feat-card-body">
+            <p>AI 챗봇이 던지는 몇가지 질문에 답변 시</p>
+            <p class="hl">⇒오늘의 러닝을 감성 문구로 만들어 사용자경험 증대</p>
+          </div>
+        </div>
+      </div>
+      <div class="tky-feat-visual">
+        <img class="tky-feat-phones" src="images/Tracksy_iphone02.png" alt="Tracksy 앱 화면">
+      </div>
+    </div>
+  </section>
+
+  <section class="tky-feat tky-feat-03">
+    <div class="tky-feat-inner">
+      <div class="tky-feat-lead">
+        <span class="tky-feat-line"></span>
+        <h2 class="tky-feat-title">주요 기능</h2>
+        <p class="tky-feat-sub">러닝 카드 디자인</p>
+        <div class="tky-feat-mini">
+          <div class="tky-feat-card tky-feat-card-mini">
+            <div class="tky-feat-card-head">
+              <span class="tky-feat-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 4.5l3 3M18 3l3 3-10 10-4 1 1-4z"/></svg></span>
+              <div class="tky-feat-card-tt">
+                <h3>스타일 불러오기</h3>
+                <p>유저간 저장한 스타일 공유 가능</p>
+              </div>
+            </div>
+          </div>
+          <div class="tky-feat-card tky-feat-card-mini">
+            <div class="tky-feat-card-head">
+              <span class="tky-feat-card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a8 8 0 0 1 13.5-5.3M20 5v4h-4"/><path d="M20 13a8 8 0 0 1-13.5 5.3M4 19v-4h4"/><path d="M12 9l.7 1.9 1.9.6-1.9.7L12 15l-.7-1.8-1.9-.7 1.9-.6z"/></svg></span>
+              <div class="tky-feat-card-tt">
+                <h3>나만의 커스텀 디자인</h3>
+                <p>러닝 기록 불러와 커스텀 디자인 가능</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tky-feat-visual">
+        <img class="tky-feat-phones" src="images/Tracksy_iphone03.png" alt="Tracksy 앱 화면">
       </div>
     </div>
   </section>
@@ -978,55 +1379,36 @@
       <div class="dsys-grid">
         <div class="ds-card ds-typo">
           <p class="ds-h"><span class="n">01</span>Typography</p>
-          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">A2Z</div><div class="d">폰트 설명을 입력하세요.<br>가독성 높은 브랜드 폰트입니다.</div></div></div>
-          <div class="ds-w"><span class="kr" style="font-weight:600">샘플 텍스트</span><span class="en" style="font-weight:600">SemiBold</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:500">샘플 텍스트</span><span class="en" style="font-weight:500">Medium</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:400">샘플 텍스트</span><span class="en" style="font-weight:400">Regular</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:300">샘플 텍스트</span><span class="en" style="font-weight:300">Light</span></div>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">Pretendard</div><div class="d">심플한 디자인과 높은 가독성으로<br>콘텐츠 전달력을 높여주는 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:700">트랙시</span><span class="en" style="font-weight:700">Bold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">트랙시</span><span class="en" style="font-weight:400">Regular</span></div>
         </div>
         <div class="ds-card ds-color">
           <p class="ds-h"><span class="n">02</span>Color</p>
           <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
-            <div class="ds-sw"><div class="chip" style="background:#F7F4F1"></div><div class="hex">#F7F4F1</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#633418"></div><div class="hex">#633418</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#F0EEFD"></div><div class="hex">#F0EEFD</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#C4B6FC"></div><div class="hex">#C4B6FC</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#7E76E0"></div><div class="hex">#7E76E0</div></div>
           </div></div>
-          <div class="ds-group"><div class="ds-glabel">Sub colors</div><div class="ds-swrow">
-            <div class="ds-sw"><div class="chip" style="background:#D5C9BC"></div><div class="hex">#D5C9BC</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+          <div class="ds-group"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
+            <div class="ds-sw"><div class="chip" style="background:#D9D9D9"></div><div class="hex">#D9D9D9</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#000000"></div><div class="hex">#000000</div></div>
           </div></div>
-          <div class="ds-group ds-gray"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
-            <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#D6D6D6"></div><div class="hex">#D6D6D6</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#868686"></div><div class="hex">#868686</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#7A7A7A"></div><div class="hex">#7A7A7A</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
-          </div></div>
-        </div>
-        <div class="ds-card ds-ui">
-          <p class="ds-h"><span class="n">03</span>UI Elements</p>
-          <div class="ds-uirow">
-            <button class="ds-btn-primary">주요버튼</button>
-            <button class="ds-btn-ghost">보조버튼</button>
-            <div class="ds-page"><span class="on">1</span><span class="off">2</span></div>
-            <div class="ds-check"><i class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12l5 5L20 6"/></svg></i><i class="off"></i></div>
-            <div class="ds-radio"><i class="on"></i><i class="off"></i></div>
-            <div class="ds-step"><button>−</button><span class="val">1</span><button>+</button></div>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== 프로젝트 상세 (복제 2) ===== -->
-  <div class="hb-wrap">
-  <section class="hb">
+  <!-- ===== 프로젝트 상세 (Buja tour) ===== -->
+  <div class="hb-wrap hb-solo">
+  <section class="hb mac buja" style="background:url('images/Bujatour_img.png') center/cover no-repeat;">
     <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
-        <h2>Honeybrown</h2>
+        <h2>Buja tour</h2>
         <span class="hb-line"></span>
-        <p class="hb-sub">웹사이트 리디자인</p>
-        <p class="hb-desc">자연이 주는 따뜻함과 공간의 가치를 담은 프리미엄 원목 가구 브랜드 '허니브라운'의 <br> 웹사이트 리디자인 프로젝트입니다. 브랜드 아이덴티티를 강화하고 사용자 중심의 <br> 정보 구조를 구축하여 더욱 직관적이고 편안한 쇼핑 경험을 제공하는 것을 목표로 <br> 하였습니다.</p>
+        <p class="hb-sub">웹사이트 리디자인 팀프로젝트</p>
+        <p class="hb-desc">기존 웹사이트의 정보 구조와 디자인을 개선하여 사용자가 차량 정보를 쉽고 <br> 빠르게 확인하고 문의까지 자연스럽게 이어질 수 있도록 설계하였습니다. <br> 또한 기업의 신뢰감과 전문성을 효과적으로 전달하는 것을 목표로 <br> 웹사이트를 리디자인하였습니다.</p>
         <a class="hb-link" href="#" target="_blank" rel="noopener">Go to Website &rarr;</a>
         <div class="hb-meta">
           <div class="hb-row">
@@ -1045,95 +1427,141 @@
           </div>
         </div>
       </div>
-
-      <div class="hb-mock">
-        <div class="hb-laptop">
-          <img class="frame" src="images/mock-up.png" alt="">
-          <div class="hb-screen"><img src="images/honeybrown_mockup_img.png" alt=""></div>
-        </div>
-        <img class="hb-phone" src="images/Honeybrown_iphone.png" alt="">
-      </div>
     </div>
   </section>
   </div>
 
-  <section class="process">
-    <div class="process-inner">
-      <p class="process-over">REDESIGN PROCESS</p>
-      <h2 class="process-title">문제점 분석 &amp; 개선 방향</h2>
-      <div class="process-grid">
-        <div class="pcard">
-          <span class="pcard-label">As-Is</span>
-          <div class="pcard-body">
-            <div class="pshot"><img src="images/As-Is.png" alt="기존 웹사이트"></div>
-            <div class="plist">
-              <div class="pitem"><div><span class="pnum">01</span><h3>문제점 제목</h3></div><div class="pline"></div><p>문제점 설명을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
-              <div class="pitem"><div><span class="pnum">02</span><h3>문제점 제목</h3></div><div class="pline"></div><p>문제점 설명을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
-              <div class="pitem"><div><span class="pnum">03</span><h3>문제점 제목</h3></div><div class="pline"></div><p>문제점 설명을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
-            </div>
+  <!-- ===== 문제점 분석 (Buja tour) ===== -->
+  <section class="buja-prob">
+    <div class="buja-prob-inner">
+      <p class="buja-prob-over">PROJECT OVERVIEW</p>
+      <h2 class="buja-prob-title">차량 정보를 <b>더 쉽게</b>, 문의는 <b>더 빠르게</b></h2>
+      <span class="buja-prob-line"></span>
+      <p class="buja-prob-sub">기존 웹사이트와 서비스의 문제점을 분석하여<br>개선이 필요한 핵심 영역을 도출했습니다.</p>
+      <div class="buja-prob-cards">
+        <div class="buja-prob-card">
+          <span class="buja-prob-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M15.5 7.5l2 2-3.6 1.6 1.6-3.6z"/></svg></span>
+          <div class="buja-prob-ct">
+            <h3>올드한 디자인</h3>
+            <ul><li>과거형 레이아웃</li><li>낮은 브랜드 신뢰감</li><li>시각적 일관성 부족</li></ul>
           </div>
         </div>
-        <div class="process-arrow">&rarr;</div>
-        <div class="pcard">
-          <span class="pcard-label">To-Be</span>
-          <div class="pcard-body">
-            <div class="pshot"><img src="images/To-Be.png" alt="리디자인 웹사이트"></div>
-            <div class="plist">
-              <div class="pitem"><div><span class="pnum">01</span><h3>개선 제목</h3></div><div class="pline"></div><p>개선 내용을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
-              <div class="pitem"><div><span class="pnum">02</span><h3>개선 제목</h3></div><div class="pline"></div><p>개선 내용을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
-              <div class="pitem"><div><span class="pnum">03</span><h3>개선 제목</h3></div><div class="pline"></div><p>개선 내용을 입력하세요.<br>두 번째 줄 설명입니다.</p></div>
-            </div>
+        <div class="buja-prob-card">
+          <span class="buja-prob-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span>
+          <div class="buja-prob-ct">
+            <h3>서비스 인지 부족</h3>
+            <ul><li>차량 대절 서비스 인지 어려움</li><li>차량 정보 접근성 부족</li><li>핵심 서비스 노출 미흡</li><li>서비스 차별성 부재</li></ul>
+          </div>
+        </div>
+        <div class="buja-prob-card">
+          <span class="buja-prob-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9l-3 3 3 3M4 12h16M17 9l3 3-3 3"/></svg></span>
+          <div class="buja-prob-ct">
+            <h3>전환 구조 부족</h3>
+            <ul><li>CTA 버튼 부족</li><li>문의 동선 불명확</li><li>견적 유도 요소 부족</li><li>전환율 저하 요인</li></ul>
+          </div>
+        </div>
+        <div class="buja-prob-card">
+          <span class="buja-prob-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></span>
+          <div class="buja-prob-ct">
+            <h3>사용자 흐름 유도 부족</h3>
+            <ul><li>정보 탐색 어려움</li><li>사용자 의도 파악 미흡</li><li>직관성 부족</li></ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="tobe">
-    <div class="tobe-inner">
-      <h2 class="tobe-title">To-Be Design</h2>
-      <p class="tobe-sub">사용자 경험과 브랜드 아이덴티티를 고려해 정보 구조와 화면 구성을 개선했습니다.</p>
-      <div class="tobe-body">
-        <div class="tobe-shot"><img src="images/honeybrown_mockup_img.png" alt="리디자인 전체 페이지"></div>
-        <div class="tobe-list">
-          <div class="tb-item" style="--top:11%"><div class="tb-head"><span class="tb-num">01</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:29%"><div class="tb-head"><span class="tb-num">02</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:47%"><div class="tb-head"><span class="tb-num">03</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:65%"><div class="tb-head"><span class="tb-num">04</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
-          <div class="tb-item" style="--top:83%"><div class="tb-head"><span class="tb-num">05</span><h3>섹션 제목</h3></div><ul><li>포인트 설명을 입력하세요</li><li>포인트 설명을 입력하세요</li></ul></div>
+  <!-- ===== 경쟁사 분석 (Buja tour) ===== -->
+  <section class="buja-comp">
+    <div class="buja-comp-inner">
+      <p class="buja-sec-over">경쟁사 분석</p>
+      <table class="buja-table">
+        <thead>
+          <tr><th>분석 항목</th><th><img class="buja-logo" src="images/Bujatour_logo01.png" alt="부자관광"></th><th><img class="buja-logo" src="images/Bujatour_logo02.png" alt="All BUS"></th><th><img class="buja-logo buja-logo3" src="images/Bujatour_logo03.png" alt="CALLBUS"></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="cat">차량 사진 제공</td><td><img class="buja-sym" src="images/Bujatour_icon02.png" alt="부분 제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td></tr>
+          <tr><td class="cat">차량 상세 정보</td><td><img class="buja-sym" src="images/Bujatour_icon02.png" alt="부분 제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td></tr>
+          <tr><td class="cat">기사 프로필</td><td><img class="buja-sym" src="images/Bujatour_icon03.png" alt="미제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td></tr>
+          <tr><td class="cat">고객 후기</td><td><img class="buja-sym" src="images/Bujatour_icon03.png" alt="미제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td></tr>
+          <tr><td class="cat">기업 신뢰성 강조</td><td><img class="buja-sym" src="images/Bujatour_icon02.png" alt="부분 제공"></td><td><img class="buja-sym" src="images/Bujatour_icon02.png" alt="부분 제공"></td><td><img class="buja-sym" src="images/Bujatour_icon02.png" alt="부분 제공"></td></tr>
+        </tbody>
+      </table>
+      <p class="buja-legend"><span><img src="images/Bujatour_icon01.png" alt="">제공</span><span><img src="images/Bujatour_icon02.png" alt="">부분 제공</span><span><img src="images/Bujatour_icon03.png" alt="">미제공</span></p>
+      <p class="buja-comp-note">경쟁사 대비 부족했던 신뢰 콘텐츠를 보완하기 위해<br><b>차량 정보</b>, <b>기사 정보</b>, <b>후기 시스템</b>을 핵심 개선 요소로 선정했습니다.</p>
+    </div>
+  </section>
+
+  <!-- ===== 팀 프로젝트 과정 (Buja tour) ===== -->
+  <section class="buja-proc">
+    <div class="buja-proc-inner">
+      <p class="buja-sec-over">팀 프로젝트 과정</p>
+      <div class="buja-steps">
+        <div class="buja-step">
+          <span class="buja-step-num">01</span>
+          <h3>방향 설정</h3>
+          <span class="buja-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13" r="8"/><circle cx="11" cy="13" r="4"/><path d="M11 13l9-9M16 4h4v4"/></svg></span>
+          <ul><li>사이트 선정</li><li>문제점 분석</li><li>목표 및 방향성 수립</li></ul>
+        </div>
+        <span class="buja-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        <div class="buja-step">
+          <span class="buja-step-num">02</span>
+          <h3>시안 검토/개선</h3>
+          <span class="buja-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="8" cy="9" r="1.2"/><path d="M6 14l3-2 3 2 3-3 2 2"/></svg></span>
+          <ul><li>UX 개선</li><li>핵심 서비스 노출</li><li>콘텐츠 차별화</li></ul>
+        </div>
+        <span class="buja-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        <div class="buja-step">
+          <span class="buja-step-num">03</span>
+          <h3>코드 구현</h3>
+          <span class="buja-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M9 8.5l-2 2 2 2M15 8.5l2 2-2 2M13 7l-2 7"/></svg></span>
+          <ul><li>AI 활용 프론트엔드</li><li>메인 및 서브페이지 구현</li><li>퍼블리싱 결과 검토</li></ul>
+        </div>
+        <span class="buja-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        <div class="buja-step">
+          <span class="buja-step-num">04</span>
+          <h3>기능 보완</h3>
+          <span class="buja-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8 10l1.4 1.4L12 8.5M8 15l1.4 1.4L12 13.5"/></svg></span>
+          <ul><li>메뉴 구조 및 사용성 개선</li><li>문의·후기 기능 기획</li><li>관리자 및 백엔드 연동</li></ul>
+        </div>
+        <span class="buja-step-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        <div class="buja-step">
+          <span class="buja-step-num">05</span>
+          <h3>최종 수정/마무리</h3>
+          <span class="buja-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 20h20"/><path d="M9 10.5l2 2 3.5-3.5"/></svg></span>
+          <ul><li>UI-콘텐츠 최종 보완</li><li>사용자 흐름 최적화</li><li>개발 완료 및 프로젝트 정리</li></ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="dsys">
+  <!-- ===== Buja tour: 디자인시스템 ===== -->
+
+  <section class="dsys dsys-buja">
     <div class="dsys-inner">
       <h2 class="dsys-title">Design System</h2>
       <div class="dsys-grid">
         <div class="ds-card ds-typo">
           <p class="ds-h"><span class="n">01</span>Typography</p>
-          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">A2Z</div><div class="d">폰트 설명을 입력하세요.<br>가독성 높은 브랜드 폰트입니다.</div></div></div>
-          <div class="ds-w"><span class="kr" style="font-weight:600">샘플 텍스트</span><span class="en" style="font-weight:600">SemiBold</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:500">샘플 텍스트</span><span class="en" style="font-weight:500">Medium</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:400">샘플 텍스트</span><span class="en" style="font-weight:400">Regular</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:300">샘플 텍스트</span><span class="en" style="font-weight:300">Light</span></div>
+          <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">Pretendard</div><div class="d">심플한 디자인과 높은 가독성으로<br>콘텐츠 전달력을 높여주는 폰트입니다.</div></div></div>
+          <div class="ds-w"><span class="kr" style="font-weight:700">Pretendard Bold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:600">Pretendard semiBold</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">Pretendard regular</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:500">Pretendard medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:300">Pretendard Light</span></div>
         </div>
         <div class="ds-card ds-color">
           <p class="ds-h"><span class="n">02</span>Color</p>
           <div class="ds-group"><div class="ds-glabel">Main colors</div><div class="ds-swrow">
-            <div class="ds-sw"><div class="chip" style="background:#F7F4F1"></div><div class="hex">#F7F4F1</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#633418"></div><div class="hex">#633418</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#04194C"></div><div class="hex">#04194C</div></div>
           </div></div>
           <div class="ds-group"><div class="ds-glabel">Sub colors</div><div class="ds-swrow">
-            <div class="ds-sw"><div class="chip" style="background:#D5C9BC"></div><div class="hex">#D5C9BC</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#ED1B24"></div><div class="hex">#ED1B24</div></div>
           </div></div>
           <div class="ds-group ds-gray"><div class="ds-glabel">Grayscale</div><div class="ds-swrow">
-            <div class="ds-sw"><div class="chip" style="background:#FFFFFF"></div><div class="hex">#FFFFFF</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#D6D6D6"></div><div class="hex">#D6D6D6</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#868686"></div><div class="hex">#868686</div></div>
-            <div class="ds-sw"><div class="chip" style="background:#7A7A7A"></div><div class="hex">#7A7A7A</div></div>
             <div class="ds-sw"><div class="chip" style="background:#222222"></div><div class="hex">#222222</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#636363"></div><div class="hex">#636363</div></div>
+            <div class="ds-sw"><div class="chip" style="background:#DBD9D9"></div><div class="hex">#DBD9D9</div></div>
           </div></div>
         </div>
         <div class="ds-card ds-ui">
@@ -1141,10 +1569,9 @@
           <div class="ds-uirow">
             <button class="ds-btn-primary">주요버튼</button>
             <button class="ds-btn-ghost">보조버튼</button>
-            <div class="ds-page"><span class="on">1</span><span class="off">2</span></div>
-            <div class="ds-check"><i class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12l5 5L20 6"/></svg></i><i class="off"></i></div>
-            <div class="ds-radio"><i class="on"></i><i class="off"></i></div>
-            <div class="ds-step"><button>−</button><span class="val">1</span><button>+</button></div>
+            <button class="ds-btn-navy">보조버튼</button>
+            <button class="ds-btn-primary ds-btn-sm">주요버튼</button>
+            <div class="ds-page"><span class="on">1</span></div>
           </div>
         </div>
       </div>
