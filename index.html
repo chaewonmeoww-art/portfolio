@@ -6,6 +6,24 @@
 <title>Portfolio</title>
 <style>
   /* ===== 폰트 ===== */
+  /* ===== 우측 프로젝트 네비게이션 ===== */
+  .side-nav{
+    position:fixed; right:26px; top:50%; transform:translateY(-50%);
+    z-index:1000; display:flex; flex-direction:column; align-items:center; gap:20px;
+    opacity:0; visibility:hidden; transition:opacity .4s ease, visibility .4s ease;
+  }
+  .side-nav.show{ opacity:1; visibility:visible; }
+  .side-nav a{
+    position:relative; display:block;
+    width:56px;                 /* 아이콘 비율(58x44)에 맞춰 높이는 자동 */
+    transition:transform .25s ease;
+  }
+  .side-nav a img{ width:100%; height:auto; display:block; }
+  .side-nav a:hover{ transform:scale(1.12); }
+  /* 현재 보고 있는 섹션: 아이콘을 다른 것보다 크게 */
+  .side-nav a.active{ transform:scale(1.35); }
+  @media (max-width:900px){ .side-nav{ display:none; } }
+
   /* Pretendard : "디자이너 박채원 입니다." 에만 사용 */
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
   @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
@@ -55,19 +73,28 @@
   .mac-wrap { height:1000vh; }   /* MAC 페이지가 길어 고정 구간을 더 늘림 */
 
   /* ===================== 1. 인트로 (메인) ===================== */
-  .hero-wrap { height:100vh; position:relative; }
+  /* 인트로를 스크롤 동안 고정(pin): 여분 높이만큼 스크롤해도 화면은 그대로,
+     그 구간에서 Portfolio 글씨가 다 나온 뒤 다음 섹션으로 넘어감 */
+  .hero-wrap { height:260vh; position:relative; }
   .hero {
     position:sticky; top:0;
     height:100vh; width:100%;
     overflow:hidden;
   }
   .cover-svg { width:100%; height:100%; display:block; }
-  /* 스크롤 안내 (인트로 하단) */
+  /* 인트로 하단에 꽉 차는 Portfolio 워드마크 (처음엔 왼쪽 밖에 숨김 → 스크롤 시 오른쪽으로 등장) */
+  .hero-cover {
+    position:absolute; left:0; bottom:0;
+    width:100%; height:auto; display:block;
+    transform:translateX(-100%);
+    will-change:transform;
+  }
+  /* 스크롤 안내 (인트로 정중앙, 검정) */
   .scroll-ind {
-    position:absolute; left:50%; bottom:clamp(24px,4vh,48px);
-    transform:translateX(-50%); z-index:4;
+    position:absolute; left:50%; top:50%;
+    transform:translate(-50%,-50%); z-index:4;
     display:flex; flex-direction:column; align-items:center; gap:11px;
-    color:#EDEAE4; pointer-events:none; will-change:opacity;
+    color:#111111; pointer-events:none; will-change:opacity;
   }
   .scroll-ind span {
     font-size:13px; font-weight:600; letter-spacing:.42em; text-indent:.42em;
@@ -302,6 +329,10 @@
   .hb-screen img { width:100%; height:auto; display:block; will-change:transform; }
   .hb-phone  { position:absolute; right:12.5%; bottom:6%; height:55%; width:auto; z-index:2;
     filter:drop-shadow(0 18px 40px rgba(0,0,0,.45)); }
+  /* MAC 아이폰 목업: iphone_mockup 프레임의 회색 여백을 배경 크롭으로 제거 후 MAC 화면 삽입 */
+  .mac-phone { position:absolute; right:12.5%; bottom:6%; height:55%; width:auto; z-index:3;
+    border-radius:clamp(14px,1.6vw,26px); object-fit:cover;
+    filter:drop-shadow(0 18px 40px rgba(0,0,0,.45)); }
 
   /* ===================== 5. Redesign Process (As-Is / To-Be) ===================== */
   .process {
@@ -459,9 +490,8 @@
   .dsys-buja .ds-aa .aa,
   .dsys-buja .ds-aa .a2z .t { color:#04194C; }
   .dsys-buja .ds-card { border:1px solid #e2e6ee; box-shadow:0 18px 46px rgba(4,25,76,.07); }
-  .dsys-buja .ds-btn-primary,
-  .dsys-buja .ds-btn-ghost,
-  .dsys-buja .ds-btn-navy { border-radius:14px; }
+  .dsys-buja .ds-uirow > button { box-sizing:border-box; min-width:140px; padding:13px 24px; border-radius:14px; font-size:15px; font-weight:600; }
+  .dsys-buja .ds-uirow > button.ds-sec { border-radius:8px; }
   .dsys-buja .ds-btn-primary { background:#ED1B24; }
   .dsys-buja .ds-btn-ghost { background:#ffffff; color:#04194C; border:1.5px solid #04194C; }
   .dsys-buja .ds-btn-navy { background:#04194C; }
@@ -524,6 +554,7 @@
   .buja-sym { width:clamp(16px,1.3vw,22px); height:auto; vertical-align:middle; }
   .buja-logo { height:clamp(20px,1.7vw,28px); width:auto; max-width:clamp(110px,11vw,150px); object-fit:contain; vertical-align:middle; }
   .buja-logo3 { height:auto; width:clamp(100px,10vw,132px); }
+  .buja-logo-main { transform:scale(1.3); transform-origin:center; }
   .buja-legend img { width:15px; height:auto; vertical-align:middle; margin-right:5px; }
   .buja-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:14px; overflow:hidden; border:1px solid #e2e6ee; box-shadow:0 14px 34px rgba(4,25,76,.05); }
   .buja-table th, .buja-table td { padding:clamp(12px,1.3vw,18px); text-align:center; font-size:clamp(13px,1.05vw,16px); border-bottom:1px solid #eef0f5; border-right:1px solid #eef0f5; }
@@ -685,11 +716,11 @@
   /* Judy UI: 원형 화살표 버튼 + 주요/보조 버튼 */
   .dsys-judy .ds-uirow.judy-uirow { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(16px,2vw,30px); }
   .jui-arrows { display:flex; gap:clamp(18px,2.2vw,36px); }
-  .jui-circle { width:clamp(54px,4.6vw,72px); height:clamp(54px,4.6vw,72px); border-radius:50%; background:#FF60A2; color:#ffffff; border:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+  .jui-circle { width:clamp(38px,3vw,46px); height:clamp(38px,3vw,46px); border-radius:50%; background:#FF60A2; color:#ffffff; border:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
   .jui-circle svg { width:46%; height:46%; }
   .jui-btn { border:0; cursor:pointer; background:#FF60A2; color:#ffffff; font-family:inherit; font-weight:700; border-radius:999px; }
-  .jui-primary { padding:clamp(16px,1.6vw,22px) clamp(46px,5vw,72px); font-size:clamp(19px,1.7vw,26px); }
-  .jui-secondary { padding:clamp(11px,1.1vw,15px) clamp(28px,3vw,42px); font-size:clamp(15px,1.2vw,18px); }
+  .jui-primary { padding:13px 28px; font-size:clamp(14px,1vw,16px); }
+  .jui-secondary { padding:13px 24px; font-size:clamp(14px,1vw,16px); }
 
   /* MAC 문제점 분석: 흰 배경 · 검정 글씨 */
   .proc-mac { background:#ffffff; }
@@ -903,50 +934,109 @@
   .ds-step button { width:40px; height:40px; border:0; background:#fff; font-size:18px; color:#3a2f28; font-family:inherit; cursor:pointer; }
   .ds-step .val { width:44px; text-align:center; line-height:40px; border-left:1px solid #eee4d8; border-right:1px solid #eee4d8; font-size:15px; color:#2a2320; }
 
-  @media (max-width:900px) {
-    .dsys-grid { flex-direction:column; }
+  /* ===================== 반응형 (태블릿 · 모바일) ===================== */
+
+  /* ── 태블릿 가로 (≤1024px) : 여백 축소 + 다열 그리드 완화 ── */
+  @media (max-width:1024px){
+    .resume, .index-wrap { margin-top:120px; }
+    .resume { padding:56px clamp(28px,5vw,60px); }
+    .index { padding:80px clamp(28px,6vw,90px); }
+    .index-head .hline { margin-left:clamp(120px,18vw,300px); }
+    .process { padding:120px clamp(18px,4vw,40px) 56px; }
+    .tobe, .dsys { padding-top:120px; padding-bottom:56px; }
+    /* 다열 그리드 한 단계 축소 */
+    .tky-imp-feats { grid-template-columns:repeat(3,1fr); }
+    .tov-feats, .buja-prob-cards { grid-template-columns:repeat(2,1fr); }
+    .ds-icongrid { grid-template-columns:repeat(3,1fr); }
+    .tky-probs { grid-template-columns:repeat(3,1fr); }
+  }
+
+  /* ── 태블릿 세로 (≤768px) : 2열 레이아웃을 1열로 스택 ── */
+  @media (max-width:768px){
+    /* 이력서 */
+    .resume-body { flex-direction:column; }
+    .divider { display:none; }
+    .left { width:100%; }
+    .right { grid-template-columns:1fr; }
+    .skills { grid-template-columns:1fr 1fr; }
+    /* 목차 */
+    .proj-grid { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; column-gap:0; row-gap:44px; }
+    .index-head { gap:18px; margin-bottom:48px; }
+    .index-head .hline { display:none; }
+    /* 프로젝트 히어로: 텍스트는 왼쪽 상단, 목업은 작게 우하단 */
+    .hb-text { max-width:58%; left:clamp(20px,5vw,40px); }
+    .hb-mock { top:auto; bottom:3%; right:2%; height:auto; width:44%; }
+    .hb-laptop { height:auto; width:100%; }
+    .hb-laptop .frame { height:auto; width:100%; }
+    .hb-phone, .mac-phone { display:none; }
+    /* 프로세스 / To-Be */
+    .process-grid { grid-template-columns:1fr; }
+    .process-arrow { justify-self:center; transform:rotate(90deg); }
+    .pcard-body { flex-direction:column; }
+    .pshot { flex-basis:auto; max-height:360px; }
     .tobe-body { flex-direction:column; gap:40px; }
     .tobe-shot { flex:none; width:100%; max-width:100%; }
     .tobe-list { flex:none; width:100%; display:flex; flex-direction:column; gap:36px; }
     .tb-item { position:static; transform:none; }
     .tb-item::before, .tb-item::after { display:none; }
-    .process-grid { grid-template-columns:1fr; }
-    .tracksy-overview { grid-template-columns:1fr; }
-    .process-arrow { justify-self:center; transform:rotate(90deg); }
-    .pcard-body { flex-direction:column; }
-    .pshot { flex-basis:auto; max-height:340px; }
-    .resume-body { flex-direction:column; }
-    .divider { display:none; }
-    .right { grid-template-columns:1fr; }
-    .skills { grid-template-columns:1fr 1fr; }
-    .proj-grid { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; }
-    .hb-inner { flex-direction:column; }
-    .hb-mock { width:100%; height:300px; }
+    /* 디자인시스템 카드 스택 */
+    .dsys-grid { flex-direction:column; }
+    /* 2열 콘텐츠 → 1열 */
+    .buja-ov-body, .tky-feat-inner, .tky-row, .tracksy-overview,
+    .tky-imp-top, .tov-cards { grid-template-columns:1fr; }
+    .tky-imp-arrow, .tky-imp-arrow svg { transform:rotate(90deg); }
+    .tky-imp-arrow { justify-self:center; }
+    .tky-probs { grid-template-columns:1fr; }
+    .tky-imp-feats { grid-template-columns:repeat(2,1fr); }
+    /* Tracksy 기능 섹션: 음수 마진/변형 초기화로 넘침 방지 */
+    .tky-feat-lead { transform:none; padding-left:0; }
+    .tky-feat-lead .tky-feat-title, .tky-feat-lead .tky-feat-sub { white-space:normal; }
+    .tky-feat-card, .tky-feat-mini { width:100%; }
+    .tky-feat-visual { transform:none; }
+    /* 넓은 표는 가로 스크롤 허용 */
+    .tky-imp-table, .buja-comp-inner { overflow-x:auto; }
+  }
+
+  /* ── 모바일 (≤600px) : 완전 1열 + 여백 최소화 ── */
+  @media (max-width:600px){
+    .resume, .index-wrap { margin-top:76px; }
+    .resume { padding:44px 22px; }
+    .skills { grid-template-columns:1fr; }
+    .index { padding:60px 22px; }
+    .process { padding:88px 18px 48px; }
+    .tobe, .dsys { padding-top:88px; padding-left:18px; padding-right:18px; }
+    /* 다열 그리드 최종 축소 */
+    .tky-imp-feats, .tov-feats, .buja-prob-cards { grid-template-columns:repeat(2,1fr); }
+    .ds-icongrid { grid-template-columns:repeat(3,1fr); }
+    /* 프로젝트 히어로: 텍스트만, 목업 숨김 (배경 이미지로 대체) */
+    .hb-inner { display:flex; flex-direction:column; justify-content:flex-start; }
+    .hb-text { position:static; transform:none; max-width:none; left:auto; top:auto;
+      padding:clamp(96px,20vh,170px) 24px 0; }
+    .hb-text br, .hb-desc br { display:none; }
+    .hb-mock { display:none; }
+    /* 디자인시스템 UI: 버튼 세로 정렬 */
+    .ds-ui .ds-uirow { grid-template-columns:1fr; justify-items:stretch; }
+    .dsys-buja .ds-uirow > button { min-width:0; width:100%; }
   }
 </style>
 </head>
 <body>
 
+  <!-- ===== 우측 프로젝트 네비게이션 ===== -->
+  <nav class="side-nav" id="sideNav" aria-label="프로젝트 바로가기">
+    <a href="#proj-tracksy"   data-target="proj-tracksy"><img src="images/Tracksy_main_icon.png" alt="Tracksy"></a>
+    <a href="#proj-buja"      data-target="proj-buja"><img src="images/Bujatour_main_icon.png" alt="부자관광"></a>
+    <a href="#proj-honeybrown" data-target="proj-honeybrown"><img src="images/honeybrown_main_icon.png" alt="Honeybrown"></a>
+    <a href="#proj-mac"       data-target="proj-mac"><img src="images/MAC_main_icon.png" alt="MAC"></a>
+    <a href="#proj-aesop"     data-target="proj-aesop"><img src="images/Aesop_main_icon.png" alt="Aesop"></a>
+    <a href="#proj-judy"      data-target="proj-judy"><img src="images/Judy_main_icon.png" alt="Judy Game"></a>
+  </nav>
+
   <!-- ===== 인트로 (메인) ===== -->
   <div class="hero-wrap">
     <section class="hero">
-      <svg class="cover-svg" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="E-PORTFOLIO">
-        <rect width="1200" height="760" fill="#F7F4F1"/>
-        <!-- 폴더 뒤판 + 탭 -->
-        <path d="M40 250 L40 130 Q40 85 90 85 L440 85 Q468 85 486 108 L520 150 L1110 150 Q1160 150 1160 200 L1160 250 Z" fill="#E7E3DB"/>
-        <!-- 상단 작은 탭 -->
-        <path d="M700 150 L700 112 Q700 88 726 88 L1000 88 Q1026 88 1026 112 L1026 150 Z" fill="#2B2723"/>
-        <!-- 폴더 앞판 -->
-        <path d="M40 760 L40 285 Q40 235 92 235 L1108 235 Q1160 235 1160 285 L1160 760 Z" fill="#1A1815"/>
-        <!-- 반짝이 -->
-        <path d="M150 133 C158 157 164 163 188 171 C164 179 158 185 150 209 C142 185 136 179 112 171 C136 163 142 157 150 133 Z" fill="#FFFFFF"/>
-        <!-- 클립 -->
-        <rect x="1050" y="248" width="50" height="150" rx="25" fill="none" stroke="#F7F4F1" stroke-width="8"/>
-        <rect x="1063" y="268" width="24" height="98" rx="12" fill="none" stroke="#F7F4F1" stroke-width="8"/>
-        <!-- 텍스트 -->
-        <text x="104" y="500" font-family="'Pretendard', sans-serif" font-weight="800" font-size="165" letter-spacing="2" fill="#F7F4F1">PORTFOLIO</text>
-        <text x="112" y="575" font-family="'Pretendard', sans-serif" font-weight="500" font-size="28" letter-spacing="5" fill="#E7E3DB">CHAEWON PARK</text>
-      </svg>
+      <img class="hero-cover" src="images/portfolio.png" alt="Portfolio">
+
       <div class="scroll-ind" id="scrollInd">
         <span>SCROLL</span>
         <svg viewBox="0 0 22 12" fill="none" aria-hidden="true">
@@ -969,12 +1059,11 @@
           </div>
           <div class="contact">
             <div class="row"><span class="label">Call</span><span class="val">010 - 4152 - 5064</span></div>
-            <div class="row"><span class="label">Email</span><span class="val">cw1114@naver.com</span></div>
+            <div class="row"><span class="label">Email</span><span class="val">lhj670707@naver.com</span></div>
             <div class="row"><span class="label">Birth</span><span class="val">2003 - 11 -14</span></div>
           </div>
         </aside>
 
-        <div class="divider"></div>
 
         <!-- 오른쪽 -->
         <div class="right">
@@ -1066,14 +1155,14 @@
           <span class="num">05</span>
           <div>
             <div class="proj-title">TRACKSY App Design</div>
-            <div class="proj-sub"><span class="desc">TRACKSY 앱디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
+            <div class="proj-sub"><span class="desc">TRACKSY 앱디자인 팀프로젝트</span><span class="year">2026</span></div>
           </div>
         </div>
         <div class="proj">
           <span class="num">06</span>
           <div>
             <div class="proj-title">Buja tour Website Design</div>
-            <div class="proj-sub"><span class="desc">부자관광 웹사이트 리디자인 팀프로젝트</span><span class="year">2026</span><span class="rate">40% 작업</span></div>
+            <div class="proj-sub"><span class="desc">부자관광 웹사이트 리디자인 팀프로젝트</span><span class="year">2026</span></div>
           </div>
         </div>
         <div class="proj">
@@ -1090,7 +1179,7 @@
 
   <!-- ===== 프로젝트 상세 (Tracksy) ===== -->
   <div class="hb-wrap hb-solo">
-  <section class="hb mac" style="background:url('images/Tracksy_img.png') center/cover no-repeat;">
+  <section class="hb mac" id="proj-tracksy" style="background:url('images/Tracksy_img.png') center/cover no-repeat;">
     <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
@@ -1108,11 +1197,6 @@
               <img class="tool-ic" src="images/claude.png" alt="Claude">
               <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
             </span>
-          </div>
-          <div class="hb-row">
-            <span class="hb-label">Contribution</span>
-            <span class="hb-div"></span>
-            <span>100%</span>
           </div>
         </div>
       </div>
@@ -1401,7 +1485,7 @@
 
   <!-- ===== 프로젝트 상세 (Buja tour) ===== -->
   <div class="hb-wrap hb-solo">
-  <section class="hb mac buja" style="background:url('images/Bujatour_img.png') center/cover no-repeat;">
+  <section class="hb mac buja" id="proj-buja" style="background:url('images/Bujatour_img.png') center/cover no-repeat;">
     <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
@@ -1419,11 +1503,6 @@
               <img class="tool-ic" src="images/claude.png" alt="Claude">
               <img class="tool-ic" src="images/gpt.png" alt="ChatGPT">
             </span>
-          </div>
-          <div class="hb-row">
-            <span class="hb-label">Contribution</span>
-            <span class="hb-div"></span>
-            <span>100%</span>
           </div>
         </div>
       </div>
@@ -1477,7 +1556,7 @@
       <p class="buja-sec-over">경쟁사 분석</p>
       <table class="buja-table">
         <thead>
-          <tr><th>분석 항목</th><th><img class="buja-logo" src="images/Bujatour_logo01.png" alt="부자관광"></th><th><img class="buja-logo" src="images/Bujatour_logo02.png" alt="All BUS"></th><th><img class="buja-logo buja-logo3" src="images/Bujatour_logo03.png" alt="CALLBUS"></th></tr>
+          <tr><th>분석 항목</th><th><img class="buja-logo buja-logo-main" src="images/Bujatour_logo01.png" alt="부자관광"></th><th><img class="buja-logo" src="images/Bujatour_logo02.png" alt="All BUS"></th><th><img class="buja-logo buja-logo3" src="images/Bujatour_logo03.png" alt="CALLBUS"></th></tr>
         </thead>
         <tbody>
           <tr><td class="cat">차량 사진 제공</td><td><img class="buja-sym" src="images/Bujatour_icon02.png" alt="부분 제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td><td><img class="buja-sym" src="images/Bujatour_icon01.png" alt="제공"></td></tr>
@@ -1546,8 +1625,8 @@
           <div class="ds-aa"><div class="aa">Aa</div><div class="a2z"><div class="t">Pretendard</div><div class="d">심플한 디자인과 높은 가독성으로<br>콘텐츠 전달력을 높여주는 폰트입니다.</div></div></div>
           <div class="ds-w"><span class="kr" style="font-weight:700">Pretendard Bold</span></div>
           <div class="ds-w"><span class="kr" style="font-weight:600">Pretendard semiBold</span></div>
-          <div class="ds-w"><span class="kr" style="font-weight:400">Pretendard regular</span></div>
           <div class="ds-w"><span class="kr" style="font-weight:500">Pretendard medium</span></div>
+          <div class="ds-w"><span class="kr" style="font-weight:400">Pretendard regular</span></div>
           <div class="ds-w"><span class="kr" style="font-weight:300">Pretendard Light</span></div>
         </div>
         <div class="ds-card ds-color">
@@ -1568,9 +1647,9 @@
           <p class="ds-h"><span class="n">03</span>UI Elements</p>
           <div class="ds-uirow">
             <button class="ds-btn-primary">주요버튼</button>
-            <button class="ds-btn-ghost">보조버튼</button>
-            <button class="ds-btn-navy">보조버튼</button>
-            <button class="ds-btn-primary ds-btn-sm">주요버튼</button>
+            <button class="ds-btn-ghost">주요버튼</button>
+            <button class="ds-btn-navy ds-sec">보조버튼</button>
+            <button class="ds-btn-primary ds-sec">보조버튼</button>
             <div class="ds-page"><span class="on">1</span></div>
           </div>
         </div>
@@ -1579,7 +1658,7 @@
   </section>
 
   <!-- ===== 프로젝트 상세 (Honeybrown) ===== -->
-  <div class="hb-wrap">
+  <div class="hb-wrap" id="proj-honeybrown">
   <section class="hb">
     <div class="hb-fade" id="hbFade"></div>
     <div class="hb-inner">
@@ -1807,7 +1886,7 @@
 
   <!-- ===== 프로젝트 상세 (MAC) ===== -->
   <div class="hb-wrap mac-wrap">
-  <section class="hb mac" style="background:url('images/MAC_img.png') center/cover no-repeat;">
+  <section class="hb mac" id="proj-mac" style="background:url('images/MAC_img.png') center/cover no-repeat;">
     <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
@@ -1839,7 +1918,7 @@
           <img class="frame" src="images/mock-up.png" alt="MAC 웹사이트">
           <div class="hb-screen"><img src="images/MAC_mockup_img.png" alt=""></div>
         </div>
-        <img class="hb-phone" src="images/Honeybrown_iphone.png" alt="MAC 모바일">
+        <img class="mac-phone" src="images/MAC_iphone.png" alt="MAC 모바일">
       </div>
     </div>
   </section>
@@ -1944,7 +2023,7 @@
 
   <!-- ===================== PROJECT 03 ===================== -->
   <div class="hb-wrap">
-  <section class="hb mac" style="background:url('images/Aesop_img.png') center/cover no-repeat;">
+  <section class="hb mac" id="proj-aesop" style="background:url('images/Aesop_img.png') center/cover no-repeat;">
     <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
@@ -1969,7 +2048,7 @@
           <img class="frame" src="images/mock-up.png" alt="">
           <div class="hb-screen"><img src="images/Aesop_mockup_img.png" alt=""></div>
         </div>
-        <img class="hb-phone" src="images/project03_iphone.png" alt="">
+        <img class="hb-phone" src="images/Aesop_iphone.png" alt="Aesop 모바일">
       </div>
     </div>
   </section>
@@ -2063,7 +2142,7 @@
 
   <!-- ===================== PROJECT 04 ===================== -->
   <div class="hb-wrap">
-  <section class="hb mac" style="background:url('images/Judy_img.png') center/cover no-repeat;">
+  <section class="hb mac" id="proj-judy" style="background:url('images/Judy_img.png') center/cover no-repeat;">
     <div class="hb-fade"></div>
     <div class="hb-inner">
       <div class="hb-text">
@@ -2088,7 +2167,7 @@
           <img class="frame" src="images/mock-up.png" alt="">
           <div class="hb-screen"><img src="images/Judy_mockup_img.png" alt=""></div>
         </div>
-        <img class="hb-phone" src="images/project04_iphone.png" alt="">
+        <img class="hb-phone" src="images/Judy_iphone.png" alt="Judy game 모바일">
       </div>
     </div>
   </section>
@@ -2144,12 +2223,28 @@
 
     // 표지: 스크롤을 조금만 내려도 스크롤 안내가 사라짐
     const scrollInd = document.getElementById('scrollInd');
+    const heroCover = document.querySelector('.hero-cover');
+    const heroWrap  = document.querySelector('.hero-wrap');
     const clamp   = (v, a, b) => Math.min(b, Math.max(a, v));
 
     function heroRender() {
       const vh = window.innerHeight;
       const y  = window.scrollY;
-      if (scrollInd) scrollInd.style.opacity = String(clamp(1 - y / (vh * 0.25), 0, 1));
+      // 고정 구간(pin) 동안의 진행도 0→1. 글씨는 이 구간의 앞 85%에서 다 나오고,
+      // 나머지 15%는 그대로 유지된 뒤 다음 섹션으로 넘어감.
+      const pinDist = heroWrap ? Math.max(1, heroWrap.offsetHeight - vh) : vh;
+      const p = clamp(y / pinDist, 0, 1);
+      if (scrollInd) scrollInd.style.opacity = String(clamp(1 - p / 0.18, 0, 1));
+      // Portfolio 워드마크:
+      //  - 고정 구간 앞 60%에서 왼쪽 밖(-100%) → 제자리(0%)로 천천히 슬라이드
+      //  - 고정이 끝날 때까지 계속 선명하게 유지(투명도 1)
+      //  - 고정이 풀려 화면이 실제로 위로 스크롤되는 구간에서만 서서히 투명해짐
+      if (heroCover) {
+        const rp = clamp(y / (pinDist * 0.6), 0, 1);
+        heroCover.style.transform = `translateX(${(rp - 1) * 100}%)`;
+        const afterPin = (y - pinDist) / vh;   // 고정 해제(0) → 한 화면 스크롤(1)
+        heroCover.style.opacity = String(clamp(1 - afterPin, 0, 1));
+      }
     }
 
     window.addEventListener('scroll', () => requestAnimationFrame(heroRender), { passive: true });
@@ -2206,6 +2301,43 @@
       else if (screenImg) screenImg.addEventListener('load', render);
       else render();
     });
+
+    // 우측 프로젝트 네비게이션: 부드러운 스크롤 이동 + 현재 섹션 표시 + 인트로 지나면 등장
+    (function () {
+      const nav = document.getElementById('sideNav');
+      if (!nav) return;
+      const links = Array.from(nav.querySelectorAll('a'));
+      const targets = links
+        .map(a => ({ link: a, el: document.getElementById(a.dataset.target) }))
+        .filter(t => t.el);
+
+      // 클릭 시 부드럽게 이동
+      links.forEach(a => {
+        a.addEventListener('click', (e) => {
+          const el = document.getElementById(a.dataset.target);
+          if (!el) return;
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function update() {
+        // 인트로(첫 화면)를 지나면 네비게이션 표시
+        nav.classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+
+        // 뷰포트 40% 선을 기준으로 현재 프로젝트 판별
+        // (섹션이 변형된 컨테이너 안에 있어 offsetTop이 부정확하므로 rect 사용)
+        const line = window.innerHeight * 0.4;
+        let current = null;
+        targets.forEach(t => {
+          if (t.el.getBoundingClientRect().top <= line) current = t.link;
+        });
+        links.forEach(a => a.classList.toggle('active', a === current));
+      }
+      window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
   </script>
 </body>
 </html>
