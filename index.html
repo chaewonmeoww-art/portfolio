@@ -2306,6 +2306,7 @@
     (function () {
       const nav = document.getElementById('sideNav');
       if (!nav) return;
+      const indexWrap = document.querySelector('.index-wrap');
       const links = Array.from(nav.querySelectorAll('a'));
       const targets = links
         .map(a => ({ link: a, el: document.getElementById(a.dataset.target) }))
@@ -2322,8 +2323,11 @@
       });
 
       function update() {
-        // 인트로(첫 화면)를 지나면 네비게이션 표시
-        nav.classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+        // Index 섹션이 화면에 들어오면(=인트로/이력서를 지나면) 네비게이션 표시
+        const show = indexWrap
+          ? indexWrap.getBoundingClientRect().top <= window.innerHeight * 0.6
+          : window.scrollY > window.innerHeight * 0.6;
+        nav.classList.toggle('show', show);
 
         // 뷰포트 40% 선을 기준으로 현재 프로젝트 판별
         // (섹션이 변형된 컨테이너 안에 있어 offsetTop이 부정확하므로 rect 사용)
